@@ -262,24 +262,10 @@ body {
     height: 150px;
 }
 
-.box-content-cv-pj {
-    /*border: solid black 2px;*/
-    min-height: 450px;
-}
-
-.box-content-menu-droite {
-    /*border: solid black 2px;*/
-    min-height: 225px;
-}
-
 .para-main {
     margin-left: 0;
     margin-right: 0;
     margin-bottom: 0;
-}
-
-.footer-custom {
-    margin: 0 !important;
 }
 
 .collection {
@@ -287,7 +273,7 @@ body {
 }
 
 .collection .collection-item.avatar {
-    padding-right: 56px  !important;
+    padding-right: 160px !important;
 }
 
 .collection .collection-item.avatar i.circle {
@@ -298,11 +284,11 @@ body {
     width: 52px  !important;
     height: 52px  !important;
     left: 0  !important;
-    margin-top: 15px  !important;
+    margin-top: 8px !important;
 }
 
 .collection .collection-item.avatar .title {
-    line-height: 50px;
+    line-height: 40px;
 }
 
 .collection .collection-item.avatar .secondary-content {
@@ -317,7 +303,7 @@ label {
     line-height: 50px !important;
     margin-top: 50px !important;
     height: 63px !important;
-    margin: 0px !important;
+    margin: 0 !important;
 }
 
 .ico-search {
@@ -342,7 +328,7 @@ label {
 }
 
 input:-webkit-autofill {
-    -webkit-box-shadow:0 0 0 50px white inset !important; /* Change the color to your own background color */
+    -webkit-box-shadow:0 0 0 50px white inset !important;
     -webkit-text-fill-color: #333 !important;
 }
 input:-webkit-autofill:focus {
@@ -354,6 +340,16 @@ input:-webkit-autofill:focus {
 .btn-login:hover {background-color: #564AB5 !important;}
 .btn-login:active {background-color: #564AB5 !important;}
 
-a {
-    cursor: pointer;
+.btn-register {background-color: #DC6D72 !important;}
+.btn-register:hover {background-color: #DC6D72 !important;}
+.btn-register:active {background-color: #DC6D72 !important;}
+
+a {cursor: pointer;}
+
+.border-left-right {
+    margin: 0 10px;
+}
+
+.card.small {
+    height: 270px !important;
 }

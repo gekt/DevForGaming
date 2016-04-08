@@ -1,27 +1,27 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: G.E.K.T
+ * Created by G.E.K.T & Arthix
  * Date: 08/04/2016
- * Time: 17:02
- */
+ * Time: 03:43
+*/
 
-$erreur = "";
-include 'include/check-co.php';
-if (isset($_SESSION['login'])){
-    header('Location: index.php');
-}
+    $erreur = "";
+    include 'include/check-co.php';
+    if (isset($_SESSION['login'])){
+        header('Location: index.php');
+    }
 ?>
+
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
         <link rel="stylesheet" type="text/css" href="css/animate.css">
         <link type="text/css" rel="stylesheet" href="css/custom.css"  media="screen,projection"/>
-
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
 
@@ -69,7 +69,7 @@ if (isset($_SESSION['login'])){
                 </div>
                 <div class="row">
                     <div class="input-field col l12 s12 center-align">
-                        <button class="btn waves-effect waves-light btn-login" type="submit" name="connexion">Connexion
+                        <button class="btn btn-login waves-effect waves-light" type="submit" name="connexion">Connexion
                             <i class="material-icons right">send</i>
                         </button>
                     </div>
@@ -77,14 +77,14 @@ if (isset($_SESSION['login'])){
             </form>
         </div>
 
+        <!-- FOOTER -->
+        <?php include 'include/footer.php';?>
+
         <!-- SCRIPTS JS -->
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="js/materialize.min.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.4/SmoothScroll.min.js"></script>
-
-        <!-- FOOTER -->
-        <?php include 'include/footer.php';?>
 
     </body>
 </html>

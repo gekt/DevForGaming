@@ -14,6 +14,10 @@ $(document).ready(function(){
 	$(".button-collapse").sideNav();
 	$('.modal-trigger').leanModal();
 	$('#aside').pushpin({ top:110, bottom:500 });
+    $('.datepicker').pickadate({
+        selectMonths: true,
+        selectYears: 200
+    });
 
     setTimeout(function(){
         window.scrollTo(0, 0);

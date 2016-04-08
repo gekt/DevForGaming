@@ -1,23 +1,22 @@
 <?php
-session_start();
 /**
- * Created by PhpStorm.
- * User: G.E.K.T
- * Date: 07/04/2016
- * Time: 17:19
- */
+ * Created by G.E.K.T & Arthix
+ * Date: 08/04/2016
+ * Time: 03:43
+*/
+    session_start();
 ?>
 
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
         <link rel="stylesheet" type="text/css" href="css/animate.css">
         <link type="text/css" rel="stylesheet" href="css/custom.css"  media="screen,projection"/>
-
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
 
@@ -46,98 +45,198 @@ session_start();
             </div>
         </div>
 
-        <!-- MISES EN AVANT --> <!-- A FAIRE : MODIFIER LE STYLE : METTRE LES MISES EN AVANT EN CARDS (COMME SUR SEARCH.PHP) -->
+        <!-- MISES EN AVANT -->
         <div class="row para-main">
-            <div class="col l6 m12 s12 box-content-menu-droite">
-                <div class="white row center-align z-depth-2">
-                    <h3 class="header title-blue">CVs en vitrine !</h3>
+            <div class="col l6 m12 s12">
+                <div class="white row z-depth-2">
+                    <h3 class="header center-align title-blue">CVs en vitrine !</h3>
                     <p class="center-align" style="color: rgb(119, 119, 119);">Ces CVs ont été mis en avant !</p>
-                    <ul class="collection col l6">
-                        <li class="collection-item avatar col l12">
-                            <i class="material-icons circle">account_circle</i>
-                            <span class="title">Titre</span>
-                            <p>Catégorie</p>
-                            <a href="#!" class="secondary-content"><i class="material-icons">send</i></a>
-                        </li>
-                        <li class="collection-item avatar col l12">
-                            <i class="material-icons circle">account_circle</i>
-                            <span class="title">Titre</span>
-                            <p>Catégorie</p>
-                            <a href="#!" class="secondary-content"><i class="material-icons">send</i></a>
-                        </li>
-                        <li class="collection-item avatar col l12">
-                            <i class="material-icons circle green">account_circle</i>
-                            <span class="title">Titre</span>
-                            <p>Catégorie</p>
-                            <a href="#!" class="secondary-content"><i class="material-icons">send</i></a>
-                        </li>
-                    </ul>
-                    <ul class="collection col l6">
-                        <li class="collection-item avatar col l12">
-                            <i class="material-icons circle red">account_circle</i>
-                            <span class="title">Titre</span>
-                            <p>Catégorie</p>
-                            <a href="#!" class="secondary-content"><i class="material-icons">send</i></a>
-                        </li>
-                        <li class="collection-item avatar col l12">
-                            <i class="material-icons circle red">account_circle</i>
-                            <span class="title">Titre</span>
-                            <p>Catégorie</p>
-                            <a href="#!" class="secondary-content"><i class="material-icons">send</i></a>
-                        </li>
-                        <li class="collection-item avatar col l12">
-                            <i class="material-icons circle red">account_circle</i>
-                            <span class="title">Titre</span>
-                            <p>Catégorie</p>
-                            <a href="#!" class="secondary-content"><i class="material-icons">send</i></a>
-                        </li>
-                    </ul>
+                    <div class="col l4">
+                        <div class="card small">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img class="activator" src="img/parallax1.jpg">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4">Eria-Network<i class="material-icons right">more_vert</i></span>
+                                <p><a href="#">Voir plus</a></p>
+                            </div>
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-darken-4">Eria-Network<i class="material-icons right">close</i></span>
+                                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col l4">
+                        <div class="card small">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img class="activator" src="img/parallax1.jpg">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4">Eria-Network<i class="material-icons right">more_vert</i></span>
+                                <p><a href="#">Voir plus</a></p>
+                            </div>
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-darken-4">Eria-Network<i class="material-icons right">close</i></span>
+                                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col l4">
+                        <div class="card small">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img class="activator" src="img/parallax1.jpg">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4">Eria-Network<i class="material-icons right">more_vert</i></span>
+                                <p><a href="#">Voir plus</a></p>
+                            </div>
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-darken-4">Eria-Network<i class="material-icons right">close</i></span>
+                                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col l4">
+                        <div class="card small">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img class="activator" src="img/parallax1.jpg">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4">Eria-Network<i class="material-icons right">more_vert</i></span>
+                                <p><a href="#">Voir plus</a></p>
+                            </div>
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-darken-4">Eria-Network<i class="material-icons right">close</i></span>
+                                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col l4">
+                        <div class="card small">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img class="activator" src="img/parallax1.jpg">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4">Eria-Network<i class="material-icons right">more_vert</i></span>
+                                <p><a href="#">Voir plus</a></p>
+                            </div>
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-darken-4">Eria-Network<i class="material-icons right">close</i></span>
+                                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col l4">
+                        <div class="card small">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img class="activator" src="img/parallax1.jpg">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4">Eria-Network<i class="material-icons right">more_vert</i></span>
+                                <p><a href="#">Voir plus</a></p>
+                            </div>
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-darken-4">Eria-Network<i class="material-icons right">close</i></span>
+                                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col l6 m12 s12 box-content-menu-droite">
-                <div class="white row center-align z-depth-2">
-                    <h3 class="header title-blue">Projets en vitrine !</h3>
+            <div class="col l6 m12 s12">
+                <div class="white row z-depth-2">
+                    <h3 class="header center-align title-blue">Projets en vitrine !</h3>
                     <p class="center-align" style="color: rgb(119, 119, 119);">Ces projets ont été mis en avant !</p>
-                    <ul class="collection col l6">
-                        <li class="collection-item avatar col l12">
-                            <i class="material-icons circle red">extension</i>
-                            <span class="title">Titre</span>
-                            <p>Catégorie</p>
-                            <a href="#!" class="secondary-content"><i class="material-icons">send</i></a>
-                        </li>
-                        <li class="collection-item avatar col l12">
-                            <i class="material-icons circle red">extension</i>
-                            <span class="title">Titre</span>
-                            <p>Catégorie</p>
-                            <a href="#!" class="secondary-content"><i class="material-icons">send</i></a>
-                        </li>
-                        <li class="collection-item avatar col l12">
-                            <i class="material-icons circle red">extension</i>
-                            <span class="title">Titre</span>
-                            <p>Catégorie</p>
-                            <a href="#!" class="secondary-content"><i class="material-icons">send</i></a>
-                        </li>
-                    </ul>
-                    <ul class="collection col l6">
-                        <li class="collection-item avatar col l12">
-                            <i class="material-icons circle red">extension</i>
-                            <span class="title">Titre</span>
-                            <p>Catégorie</p>
-                            <a href="#!" class="secondary-content"><i class="material-icons">send</i></a>
-                        </li>
-                        <li class="collection-item avatar col l12">
-                            <i class="material-icons circle red">extension</i>
-                            <span class="title">Titre</span>
-                            <p>Catégorie</p>
-                            <a href="#!" class="secondary-content"><i class="material-icons">send</i></a>
-                        </li>
-                        <li class="collection-item avatar col l12">
-                            <i class="material-icons circle red">extension</i>
-                            <span class="title">Titre</span>
-                            <p>Catégorie</p>
-                            <a href="#!" class="secondary-content"><i class="material-icons">send</i></a>
-                        </li>
-                    </ul>
+                    <div class="col l4">
+                        <div class="card small">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img class="activator" src="img/parallax1.jpg">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4">Eria-Network<i class="material-icons right">more_vert</i></span>
+                                <p><a href="#">Voir plus</a></p>
+                            </div>
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-darken-4">Eria-Network<i class="material-icons right">close</i></span>
+                                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col l4">
+                        <div class="card small">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img class="activator" src="img/parallax1.jpg">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4">Eria-Network<i class="material-icons right">more_vert</i></span>
+                                <p><a href="#">Voir plus</a></p>
+                            </div>
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-darken-4">Eria-Network<i class="material-icons right">close</i></span>
+                                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col l4">
+                        <div class="card small">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img class="activator" src="img/parallax1.jpg">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4">Eria-Network<i class="material-icons right">more_vert</i></span>
+                                <p><a href="#">Voir plus</a></p>
+                            </div>
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-darken-4">Eria-Network<i class="material-icons right">close</i></span>
+                                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col l4">
+                        <div class="card small">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img class="activator" src="img/parallax1.jpg">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4">Eria-Network<i class="material-icons right">more_vert</i></span>
+                                <p><a href="#">Voir plus</a></p>
+                            </div>
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-darken-4">Eria-Network<i class="material-icons right">close</i></span>
+                                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col l4">
+                        <div class="card small">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img class="activator" src="img/parallax1.jpg">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4">Eria-Network<i class="material-icons right">more_vert</i></span>
+                                <p><a href="#">Voir plus</a></p>
+                            </div>
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-darken-4">Eria-Network<i class="material-icons right">close</i></span>
+                                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col l4">
+                        <div class="card small">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img class="activator" src="img/parallax1.jpg">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4">Eria-Network<i class="material-icons right">more_vert</i></span>
+                                <p><a href="#">Voir plus</a></p>
+                            </div>
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-darken-4">Eria-Network<i class="material-icons right">close</i></span>
+                                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -147,28 +246,152 @@ session_start();
             <div class="parallax"><img src="https://images8.alphacoders.com/413/413114.jpg"></div>
         </div>
 
-        <!-- DERNIER PROJETS / CV --> <!-- A FAIRE : AFFICHIER LES DERNIERS CV / PROJETS COMME LES MISES EN AVANT ! -->
+        <!-- DERNIER PROJETS / CV -->
         <div class="row para-main">
-                <div class="col l6 m12 s12 box-content-cv-pj">
-                    <div class="white row center-align z-depth-2">
-                        <h2 class="header">Dernier cv</h2>
+                <div class="col l6 m12 s12">
+                    <div class="white center-align z-depth-2">
+                        <h3 class="header title-blue">Derniers CVs</h3>
+                        <ul class="collection border-left-right">
+                            <li class="collection-item avatar">
+                                <i class="material-icons circle">account_circle</i>
+                                <span class="title">Titre</span>
+                                <p>Catégorie</p>
+                                <a class="waves-effect waves-light btn light-blue secondary-content">voir<i class="material-icons right">send</i></a>
+                            </li>
+                            <li class="collection-item avatar">
+                                <i class="material-icons circle">account_circle</i>
+                                <span class="title">Titre</span>
+                                <p>Catégorie</p>
+                                <a class="waves-effect waves-light btn light-blue secondary-content">voir<i class="material-icons right">send</i></a>
+                            </li>
+                            <li class="collection-item avatar">
+                                <i class="material-icons circle green">account_circle</i>
+                                <span class="title">Titre</span>
+                                <p>Catégorie</p>
+                                <a class="waves-effect waves-light btn light-blue secondary-content">voir<i class="material-icons right">send</i></a>
+                            </li>
+                            <li class="collection-item avatar">
+                                <i class="material-icons circle red">account_circle</i>
+                                <span class="title">Titre</span>
+                                <p>Catégorie</p>
+                                <a class="waves-effect waves-light btn light-blue secondary-content">voir<i class="material-icons right">send</i></a>
+                            </li>
+                            <li class="collection-item avatar">
+                                <i class="material-icons circle red">account_circle</i>
+                                <span class="title">Titre</span>
+                                <p>Catégorie</p>
+                                <a class="waves-effect waves-light btn light-blue secondary-content">voir<i class="material-icons right">send</i></a>
+                            </li>
+                            <li class="collection-item avatar">
+                                <i class="material-icons circle red">account_circle</i>
+                                <span class="title">Titre</span>
+                                <p>Catégorie</p>
+                                <a class="waves-effect waves-light btn light-blue secondary-content">voir<i class="material-icons right">send</i></a>
+                            </li>
+                            <li class="collection-item avatar">
+                                <i class="material-icons circle red">account_circle</i>
+                                <span class="title">Titre</span>
+                                <p>Catégorie</p>
+                                <a class="waves-effect waves-light btn light-blue secondary-content">voir<i class="material-icons right">send</i></a>
+                            </li>
+                            <li class="collection-item avatar">
+                                <i class="material-icons circle red">account_circle</i>
+                                <span class="title">Titre</span>
+                                <p>Catégorie</p>
+                                <a class="waves-effect waves-light btn light-blue secondary-content">voir<i class="material-icons right">send</i></a>
+                            </li>
+                            <li class="collection-item avatar">
+                                <i class="material-icons circle red">account_circle</i>
+                                <span class="title">Titre</span>
+                                <p>Catégorie</p>
+                                <a class="waves-effect waves-light btn light-blue secondary-content">voir<i class="material-icons right">send</i></a>
+                            </li>
+                            <li class="collection-item avatar">
+                                <i class="material-icons circle red">account_circle</i>
+                                <span class="title">Titre</span>
+                                <p>Catégorie</p>
+                                <a class="waves-effect waves-light btn light-blue secondary-content">voir<i class="material-icons right">send</i></a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-                <div class="col l6 m12 s12 box-content-cv-pj">
-                    <div class="white row center-align">
-                        <h2 class="header">Dernier Projet</h2>
+                <div class="col l6 m12 s12">
+                    <div class="white center-align z-depth-2">
+                        <h3 class="header title-blue">Derniers Projets</h3>
+                        <ul class="collection border-left-right">
+                            <li class="collection-item avatar">
+                                <i class="material-icons circle">account_circle</i>
+                                <span class="title">Titre</span>
+                                <p>Catégorie</p>
+                                <a class="waves-effect waves-light btn light-blue secondary-content">voir<i class="material-icons right">send</i></a>
+                            </li>
+                            <li class="collection-item avatar">
+                                <i class="material-icons circle">account_circle</i>
+                                <span class="title">Titre</span>
+                                <p>Catégorie</p>
+                                <a class="waves-effect waves-light btn light-blue secondary-content">voir<i class="material-icons right">send</i></a>
+                            </li>
+                            <li class="collection-item avatar">
+                                <i class="material-icons circle green">account_circle</i>
+                                <span class="title">Titre</span>
+                                <p>Catégorie</p>
+                                <a class="waves-effect waves-light btn light-blue secondary-content">voir<i class="material-icons right">send</i></a>
+                            </li>
+                            <li class="collection-item avatar">
+                                <i class="material-icons circle red">account_circle</i>
+                                <span class="title">Titre</span>
+                                <p>Catégorie</p>
+                                <a class="waves-effect waves-light btn light-blue secondary-content">voir<i class="material-icons right">send</i></a>
+                            </li>
+                            <li class="collection-item avatar">
+                                <i class="material-icons circle red">account_circle</i>
+                                <span class="title">Titre</span>
+                                <p>Catégorie</p>
+                                <a class="waves-effect waves-light btn light-blue secondary-content">voir<i class="material-icons right">send</i></a>
+                            </li>
+                            <li class="collection-item avatar">
+                                <i class="material-icons circle red">account_circle</i>
+                                <span class="title">Titre</span>
+                                <p>Catégorie</p>
+                                <a class="waves-effect waves-light btn light-blue secondary-content">voir<i class="material-icons right">send</i></a>
+                            </li>
+                            <li class="collection-item avatar">
+                                <i class="material-icons circle red">account_circle</i>
+                                <span class="title">Titre</span>
+                                <p>Catégorie</p>
+                                <a class="waves-effect waves-light btn light-blue secondary-content">voir<i class="material-icons right">send</i></a>
+                            </li>
+                            <li class="collection-item avatar">
+                                <i class="material-icons circle red">account_circle</i>
+                                <span class="title">Titre</span>
+                                <p>Catégorie</p>
+                                <a class="waves-effect waves-light btn light-blue secondary-content">voir<i class="material-icons right">send</i></a>
+                            </li>
+                            <li class="collection-item avatar">
+                                <i class="material-icons circle red">account_circle</i>
+                                <span class="title">Titre</span>
+                                <p>Catégorie</p>
+                                <a class="waves-effect waves-light btn light-blue secondary-content">voir<i class="material-icons right">send</i></a>
+                            </li>
+                            <li class="collection-item avatar">
+                                <i class="material-icons circle red">account_circle</i>
+                                <span class="title">Titre</span>
+                                <p>Catégorie</p>
+                                <a class="waves-effect waves-light btn light-blue secondary-content">voir<i class="material-icons right">send</i></a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
         </div>
+
+        <!-- INCLUDE FOOTER -->
+        <?php include 'include/footer.php';?>
 
         <!-- SCRIPTS JS -->
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="js/materialize.min.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.4/SmoothScroll.min.js"></script>
-
-        <!-- INCLUDE FOOTER -->
-        <?php include 'include/footer.php';?>
 
     </body>
 </html>
