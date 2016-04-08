@@ -8,11 +8,11 @@
 						</ul>
 		            <ul class="right hide-on-med-and-down">
 		            	<?php if (!isset($_SESSION['login'])){?>
-		                <li><a onclick="changePage('../login.php')"><i class="material-icons">perm_identity</i></a></li>
-		                <li><a href="../register.php"><i class="material-icons">mode_edit</i></a></li>
+		                <li><a onclick="changePage('login.php')"><i class="material-icons">perm_identity</i></a></li>
+		                <li><a onclick="changePage('register.php')"><i class="material-icons">mode_edit</i></a></li>
 		                <?php } ?>
 		                <?php if (isset($_SESSION['login'])){?>
-		                <li><a href="../compte.php"><i class="material-icons">perm_identity</i></a></li>
+		                <li><a href="compte.php"><i class="material-icons">perm_identity</i></a></li>
 		                <li><a href="upload-module.php"><i class="material-icons">cloud_upload</i></a></li>
 		                <li><a href="logout.php"><i class="material-icons">power_settings_new</i></a></li>
 		                <!--<li><a class="dropdown-button" href="#!" data-activates="dropdown1"><i class="material-icons">more_vert</i></a></li>-->
