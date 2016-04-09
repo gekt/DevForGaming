@@ -18,10 +18,47 @@ $(document).ready(function(){
         selectMonths: true,
         selectYears: 200
     });
-
     setTimeout(function(){
         window.scrollTo(0, 0);
     }, 1);
+});
+
+$(document).click(function(event) {
+    if ($('#search-active-detect').hasClass("active")) {
+        $('#input-cv').removeClass("hide-label");
+        $('#input-projet').removeClass("hide-label");
+        $('#input-jeu').removeClass("hide-label");
+    }
+    else {
+        $('#input-cv').addClass("hide-label");
+        $('#input-projet').addClass("hide-label");
+        $('#input-jeu').addClass("hide-label");
+    }
+    if ($(event.target).is('#input-cv') || $(event.target).is('#input-jeu') || $(event.target).is('#input-projet') || $(event.target).is('#search') || $(event.target).is('#div-search-label') || $(event.target).is('#search-submit-btn')) {
+        $('#search-div').addClass("focus-by-label");
+        $('#search-active-detect').addClass("active");
+        $('#search-logo').addClass("active-by-label");
+        $('#search-submit-btn').addClass("active-by-label");
+    }
+    else {
+        if (!$(event.target).is('input#cv'))  {
+            if (!$(event.target).is('input#jeu'))  {
+                if (!$(event.target).is('input#projet'))  {
+                    if (!$(event.target).is('#div-search-label')) {
+                        if (!$(event.target).is('#search-submit-btn')) {
+                            console.log($(event.target));
+                            $('#search-div').removeClass("focus-by-label");
+                            $('#input-cv').addClass("hide-label");
+                            $('#input-projet').addClass("hide-label");
+                            $('#input-jeu').addClass("hide-label");
+                            $('#search-logo').removeClass("active-by-label");
+                            $('#search-submit-btn').removeClass("active-by-label");
+                        }
+                    }
+                }
+            }
+        }
+    }
 });
 
 function changePage(url) {
