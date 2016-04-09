@@ -297,6 +297,7 @@ body {
 
 label {
     padding-left: 25px !important;
+    margin-right: 10px;
 }
 
 .search-nav {
@@ -354,6 +355,34 @@ a {cursor: pointer;}
     height: 270px !important;
 }
 
+.input-field input[type=search] ~ .mdi-navigation-close, .input-field input[type=search] ~ div, .search-choice, .search-choice:after, .search-choice:before {
+    position: absolute;
+    top: 0 ;
+    right: 1rem;
+    color: transparent;
+    cursor: pointer;
+    font-size: 2rem;
+    transition: .3s color;
+}
+
+.hide-label {
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+.focus-by-label {
+    background-color: #fff !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    color: #444 !important;
+    transition: .3s color !important;
+}
+
+.active-by-label {
+    pointer-events: all !important;
+    color: #444 !important;
+    transition: all 0.3s;
+}
 
 
 
@@ -1007,15 +1036,3 @@ a {cursor: pointer;}
 .box-compte-contenu {
     height: 602px;
 }
-
-
-
-
-
-
-
-
-
-
-
-

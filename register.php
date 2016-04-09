@@ -20,7 +20,7 @@
 
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
-        <link rel="stylesheet" type="text/css" href="css/animate.css">
+        <link rel="stylesheet" type="text/css" href="css/animate.min.css">
         <link type="text/css" rel="stylesheet" href="css/custom.css" media="screen,projection"/>
     </head>
     <body>
