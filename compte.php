@@ -54,53 +54,46 @@ if (!isset($_SESSION['login'])){
     <h2 class="header center-align title-blue">Mon compte</h2>
 </div>
 <div class="row">
-    <div class="col l2 s12 z-depth-3 white">
-        <div class="center-align col l12 s12"><h2>Mon profil</h2></div>
+    <div class="col l2 s12 z-depth-3 white box-compte-contenu">
+        <div class="center-align col l12 s12"><h3>Mes infos</h3></div>
         <div class="center-align col l12 s12"><img src="img/avatar.jpg" alt="profile image" class="circle responsive-img z-depth-2" style="width: 110px;"></div>
         <div class="center-align col l12 s12">
-        <ul id="profile-page-about-details" class="collection z-depth-1" style="font-size: 20px; color: #1a237e">
-            <li class="collection-item">
-                <div class="row">
-                    <div class="col s5"><i class="mdi-action-wallet-travel"></i> Pseudo</div>
-                    <div class="col s7 right-align">gekt</div>
+            <div class="row" style="margin-top: 20px;">
+                <div class="col s12">
+                    <i class="left material-icons pink-text accent-4" style="font-size: 34px; line-height: 48px;">assignment_ind</i>
+                    <div class="col s9 left-align" style="line-height: 48px; font-size: 18px;">gekt</div>
                 </div>
-            </li>
-            <li class="collection-item">
-                <div class="row">
-                    <div class="col s5 darken-5"><i class="mdi-social-poll"></i> Nom</div>
-                    <div class="col s7 right-align">Torre</div>
+                <div class="col s12" style="margin: 5px 0; border: 0; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(150, 150, 150, 0.75), rgba(0, 0, 0, 0));"></div>
+                <div class="col s12">
+                    <i class="left material-icons pink-text accent-4" style="font-size: 34px; line-height: 54px;">people</i>
+                    <div class="col s9 left-align" style="font-size: 18px;">Torre</div>
+                    <div class="col s9 left-align" style="font-size: 18px;">Kevin</div>
                 </div>
-            </li>
-            <li class="collection-item">
-                <div class="row">
-                    <div class="col s5 darken-1"><i class="mdi-social-domain"></i> Prénom</div>
-                    <div class="col s7 right-align">Kevin</div>
+                <div class="col s12" style="margin: 5px 0; border: 0; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(150, 150, 150, 0.75), rgba(0, 0, 0, 0));"></div>
+                <div class="col s12">
+                    <i class="left material-icons pink-text accent-4" style="font-size: 34px; line-height: 48px;">cake</i>
+                    <div class="col s9 left-align" style="line-height: 48px; font-size: 18px;">26th June, 1997</div>
                 </div>
-            </li>
-            <li class="collection-item">
-                <div class="row">
-                    <div class="col s5 darken-1"><i class="mdi-social-cake"></i> Date de naissance</div>
-                    <div class="col s7 right-align">26th June, 1997</div>
+                <div class="col s12" style="margin: 5px 0; border: 0; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(150, 150, 150, 0.75), rgba(0, 0, 0, 0));"></div>
+                <div class="col s12">
+                    <i class="left material-icons pink-text accent-4" style="font-size: 34px; line-height: 48px;">edit</i>
+                    <div class="col s9 left-align" style="line-height: 48px; font-size: 18px;">26th June, 1997</div>
                 </div>
-            </li>
-            <li class="collection-item">
-                <div class="row">
-                    <div class="col s5 darken-1"><i class="mdi-social-cake"></i> Date d'inscription</div>
-                    <div class="col s7 right-align">26th June, 1997</div>
+                <div class="col s12" style="margin: 5px 0; border: 0; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(150, 150, 150, 0.75), rgba(0, 0, 0, 0));"></div>
+                <div class="col s12">
+                    <i class="left material-icons pink-text accent-4" style="font-size: 34px; line-height: 48px;">mail</i>
+                    <div class="col s9 left-align" style="line-height: 48px; font-size: 18px;">jean-foutre@hotmail.com</div>
                 </div>
-            </li>
-        </ul>
-    </div>
+            </div>
+        </div>
     </div>
     <div class="col l8 s12 offset-l1 z-depth-3 white box-compte-contenu">
-        <div class="center-align"><h2>Mon activitée</h2></div>
+        <div class="center-align"><h3>Mon activitée</h3></div>
         <div class="row">
             <div class="col s12">
                 <ul class="tabs tabs-compte-cv-pj">
-                    <li class="tab col s3"><a href="#test1">Mes CVs</a></li>
-                    <li class="tab col s3"><a class="active" href="#test2">Mes Projets</a></li>
-                    <li class="tab col s3"><a href="#test3">Tab</a></li>
-                    <li class="tab col s3"><a href="#test4">Test 4</a></li>
+                    <li class="tab col s6"><a class="active waves-effect waves-red btn-flat" href="#test1">Mes CVs</a></li>
+                    <li class="tab col s6"><a class="waves-effect waves-red btn-flat" href="#test2">Mes Projets</a></li>
                 </ul>
             </div>
             <div id="test1" class="col s12">
@@ -150,7 +143,7 @@ if (!isset($_SESSION['login'])){
                         </thead>
                         <tbody>
                         <tr>
-                            <td>Alvin</td>
+                            <td>Alvin & les j'sais plus quoi</td>
                             <td>Eclair</td>
                             <td>$0.87</td>
                         </tr>
@@ -172,12 +165,6 @@ if (!isset($_SESSION['login'])){
                         </tbody>
                     </table>
                 </div>
-            <div id="test3" class="col s12">Test 3
-
-            </div>
-            <div id="test4" class="col s12">Test 4
-
-            </div>
         </div>
     </div>
 </div>

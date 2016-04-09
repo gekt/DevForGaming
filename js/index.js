@@ -46,7 +46,6 @@ $(document).click(function(event) {
                 if (!$(event.target).is('input#projet'))  {
                     if (!$(event.target).is('#div-search-label')) {
                         if (!$(event.target).is('#search-submit-btn')) {
-                            console.log($(event.target));
                             $('#search-div').removeClass("focus-by-label");
                             $('#input-cv').addClass("hide-label");
                             $('#input-projet').addClass("hide-label");
