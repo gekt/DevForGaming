@@ -25,11 +25,11 @@ if (!isset($_SESSION['login'])){
 <body>
 
 <!-- Preloader V2 -->
-<div id="loader-wrapper">
+<!--<div id="loader-wrapper">
     <div id="loader"></div>
     <div class="loader-section section-left"></div>
     <div class="loader-section section-right"></div>
-</div>
+</div>-->
 
 <!-- INCLUDE NAVBAR -->
 <?php include 'include/navbar.php'; ?>
@@ -54,35 +54,41 @@ if (!isset($_SESSION['login'])){
     <h2 class="header center-align title-blue">Mon compte</h2>
 </div>
 <div class="row">
+    <?php
+        require_once 'include/bdd.php';
+        $req = $DB->prepare("SELECT * FROM membres WHERE pseudo= ?");
+        $req->execute([$_SESSION['login']]);
+        $user = $req->fetch(PDO::FETCH_OBJ);
+    ?>
     <div class="col l2 s12 z-depth-3 white box-compte-contenu">
-        <div class="center-align col l12 s12"><h3>Mes infos</h3></div>
-        <div class="center-align col l12 s12"><img src="img/avatar.jpg" alt="profile image" class="circle responsive-img z-depth-2" style="width: 110px;"></div>
-        <div class="center-align col l12 s12">
+        <div class="center-align col s12 m12 l12"><h3>Mes infos</h3></div>
+        <div class="center-align col s12 m12 l12"><img src="img/avatar.jpg" alt="profile image" class="circle responsive-img z-depth-2" style="width: 110px;"></div>
+        <div class="center-align col s12 m12 l12">
             <div class="row" style="margin-top: 20px;">
-                <div class="col s12">
+                <div class="col s12 m12 l12">
                     <i class="left material-icons pink-text accent-4" style="font-size: 34px; line-height: 48px;">assignment_ind</i>
-                    <div class="col s9 left-align" style="line-height: 48px; font-size: 18px;">gekt</div>
+                    <div class="col s9 m9 l9 left-align profil-text"><?= $user->pseudo ?></div>
                 </div>
-                <div class="col s12" style="margin: 5px 0; border: 0; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(150, 150, 150, 0.75), rgba(0, 0, 0, 0));"></div>
-                <div class="col s12">
+                <div class="col s12 m12 l12" style="margin: 5px 0; border: 0; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(150, 150, 150, 0.75), rgba(0, 0, 0, 0));"></div>
+                <div class="col s12 m12 l12">
                     <i class="left material-icons pink-text accent-4" style="font-size: 34px; line-height: 54px;">people</i>
-                    <div class="col s9 left-align" style="font-size: 18px;">Torre</div>
-                    <div class="col s9 left-align" style="font-size: 18px;">Kevin</div>
+                    <div class="col s9 m9 l9 left-align profil-text"><?= $user->nom ?></div>
+                    <div class="col s9 m9 l9 left-align profil-text"><?= $user->prenom ?></div>
                 </div>
-                <div class="col s12" style="margin: 5px 0; border: 0; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(150, 150, 150, 0.75), rgba(0, 0, 0, 0));"></div>
-                <div class="col s12">
+                <div class="col s12 m12 l12" style="margin: 5px 0; border: 0; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(150, 150, 150, 0.75), rgba(0, 0, 0, 0));"></div>
+                <div class="col s12 m12 l12">
                     <i class="left material-icons pink-text accent-4" style="font-size: 34px; line-height: 48px;">cake</i>
-                    <div class="col s9 left-align" style="line-height: 48px; font-size: 18px;">26th June, 1997</div>
+                    <div class="col s9 m9 l9 left-align profil-text"><?= $user->datedenaissance ?></div>
                 </div>
-                <div class="col s12" style="margin: 5px 0; border: 0; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(150, 150, 150, 0.75), rgba(0, 0, 0, 0));"></div>
-                <div class="col s12">
+                <div class="col s12 m12 l12" style="margin: 5px 0; border: 0; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(150, 150, 150, 0.75), rgba(0, 0, 0, 0));"></div>
+                <div class="col s12 m12 l12">
                     <i class="left material-icons pink-text accent-4" style="font-size: 34px; line-height: 48px;">edit</i>
-                    <div class="col s9 left-align" style="line-height: 48px; font-size: 18px;">26th June, 1997</div>
+                    <div class="col s9 m9 l9 left-align profil-text"><?= date('d/m/y', $user->date_inscription) ?></div>
                 </div>
                 <div class="col s12" style="margin: 5px 0; border: 0; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(150, 150, 150, 0.75), rgba(0, 0, 0, 0));"></div>
                 <div class="col s12">
                     <i class="left material-icons pink-text accent-4" style="font-size: 34px; line-height: 48px;">mail</i>
-                    <div class="col s9 left-align" style="line-height: 48px; font-size: 18px;">jean-foutre@hotmail.com</div>
+                    <div class="col s9 m9 l9 left-align profil-text-email"><?= $user->email ?></div>
                 </div>
             </div>
         </div>

@@ -44,10 +44,8 @@ if (!empty($_POST)) {
                 'datedenaissance' => $_POST['date'],
                 'sexe' => $_POST['genre'],
                 'date_inscription' => $date));
-            session_start();
-            @mkdir ('../user-folder/' . $_POST['pseudo'] . '');
-            $_SESSION['login'] = $_POST['pseudo'];
-            header('Location: index.php');
+            @mkdir ('user-folder/' . $_POST['pseudo'] . '');
+            header('Location: login.php');
             exit();
         }
     }

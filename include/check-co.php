@@ -6,22 +6,19 @@
  * Time: 17:37
  */
 session_start();
-include 'bdd.php';
 if (isset($_POST['connexion'])){
-    $login = "";
-    $mdp = "";
-    $req = $DB->query('SELECT * FROM membres WHERE pseudo="' . $_POST["pseudo"] . '"');
-    while ($d = $req->fetch(PDO::FETCH_OBJ)) {
-        $login = $d->pseudo;
-        $mdp = $d->mdp;
-    }
+    require_once 'bdd.php';
+    $req = $DB->prepare("SELECT * FROM membres WHERE pseudo= ?");
+    $req->execute([$_POST["pseudo"]]);
+    $user = $req->fetch(PDO::FETCH_OBJ);
     $pass_hache_co = sha1($_POST['mdp_co']);
-    if ($pass_hache_co != $mdp) {
-        $erreur = "<div><div class=\"row center-align\"><div class=\"header\"><strong>Erreur!</strong> Le mot de passe est incorrect !</div></div></div>";
+    if ($pass_hache_co != $user->mdp) {
+        $erreur = "<div><div class=\"row center-align\"><div class=\"header\"><strong>Erreur!</strong> Identifiant incorrect !</div></div></div>";
     }else{
         session_start();
         $_SESSION['login'] = $_POST['pseudo'];
-        header('Location: index.php');
+        $_SESSION['auth'] = $user;
+        header('Location: compte.php');
         exit();
 
     }
