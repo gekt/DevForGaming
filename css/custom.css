@@ -384,6 +384,27 @@ a {cursor: pointer;}
     transition: all 0.3s;
 }
 
+.profil-text {
+    line-height: 48px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.profil-text-email {
+    line-height: 48px;
+    font-size: 19px;
+    font-weight: bold;
+    width: 200px; /* à modifier selon vos besoins */
+    overflow: hidden; /* les dépassements seront masqués */
+}
+
+@media screen and (max-width:975px) {
+    .box-compte-contenu{
+        margin-bottom: 20px;
+    }
+}
+
+
 
 
 
