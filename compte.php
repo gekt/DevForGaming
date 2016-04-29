@@ -60,9 +60,15 @@ if (!isset($_SESSION['login'])){
         $req->execute([$_SESSION['login']]);
         $user = $req->fetch(PDO::FETCH_OBJ);
     ?>
-    <div class="col l2 s12 z-depth-3 white box-compte-contenu">
+    <div class="col l2 m12 s12 z-depth-3 white box-compte-contenu">
         <div class="center-align col s12 m12 l12"><h3>Mes infos</h3></div>
-        <div class="center-align col s12 m12 l12"><img src="img/avatar.jpg" alt="profile image" class="circle responsive-img z-depth-2" style="width: 110px;"></div>
+        <?php
+            $avatar = "user-folder/" . $_SESSION['auth']->pseudo . "/" . $_SESSION['auth']->pseudo . "_avatar.png";
+            if (file_exists($avatar)) {?>
+            <div class="center-align col s12 m12 l12"><img src='<?php echo $avatar ?>' alt="profile image" class="circle responsive-img z-depth-2" style="width: 110px;border-radius: 100px;height: 110px;"></div>
+            <?php } else { ?>
+            <div class="center-align col s12 m12 l12"><img src="img/avatar_unknow.png" alt="profile image" class="circle responsive-img z-depth-2" style="width: 110px;border-radius: 100px;height: 110px;"></div>
+            <?php } ?>
         <div class="center-align col s12 m12 l12">
             <div class="row" style="margin-top: 20px;">
                 <div class="col s12 m12 l12">
@@ -121,7 +127,7 @@ if (!isset($_SESSION['login'])){
                             <tr>
                                 <td><?= $d->role ?></td>
                                 <td>12</td>
-                                <td><i class="material-icons">delete_forever</i></td>
+                                <td><a href="cv.php?id=<?= $d->id ?>" title="Voir mon CV"><i class="material-icons">remove_red_eye</i><a href="delete-cv.php?id=<?= $d->id ?>" title="Supprimer ce CV"><i class="material-icons">delete_forever</i></a><a href="edit-cv.php?id=<?= $d->id ?>" title="Editer ce CV"><i class="material-icons">mode_edit</i></a></td>
                             </tr>
                         <?php }?>
                         </tbody>
@@ -184,10 +190,10 @@ if (!isset($_SESSION['login'])){
         <i class="large material-icons">mode_edit</i>
     </a>
     <ul>
-        <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
-        <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
+        <li><a data-target="modal1" class="btn-floating red btn modal-trigger" title="Changer d'avatar"><i class="material-icons">account_circle</i></a></li>
+        <!--<li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
         <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
-        <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+        <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>-->
     </ul>
 </div>
 
@@ -197,6 +203,7 @@ if (!isset($_SESSION['login'])){
 
 </div>
 <!-- FOOTER -->
+<?php include 'include/modal/change-avatar.php';?>
 <?php include 'include/footer.php';?>
 
 <!-- SCRIPTS JS -->
@@ -205,7 +212,7 @@ if (!isset($_SESSION['login'])){
 <script type="text/javascript" src="js/index.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.4/SmoothScroll.min.js"></script>
 <script src='https://www.google.com/recaptcha/api.js'></script>
-<?php include 'include/alert.php';?>WW
+<?php include 'include/alert.php';?>
 
 </body>
 </html>

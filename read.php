@@ -63,7 +63,7 @@ $req->execute([$_GET['id']]);
     <h2 class="header center-align title-blue">Message de <?= $message->expediteur ?></h2>
 </div>
 <div class="row">
-    <section class="white z-depth-3 col offset-l2 l8 s12">
+    <section class="white z-depth-3 col offset-l2 l8 s12 m12">
         <h3 class="center-align">Sujet:</h3><br><p class="center-align text-mp"><?= $message->sujet ?></p>
         <h3 class="center-align">Message:</h3><br> <p class="center-align text-mp"><?= $message->message ?></p>
     </section>

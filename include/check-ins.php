@@ -45,6 +45,7 @@ if (!empty($_POST)) {
                 'sexe' => $_POST['genre'],
                 'date_inscription' => $date));
             @mkdir ('user-folder/' . $_POST['pseudo'] . '');
+            $_SESSION['flash']['error'] = "Vous êtes inscris, veuillez vous connecter";
             header('Location: login.php');
             exit();
         }

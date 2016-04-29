@@ -59,9 +59,15 @@ $data = $req->fetch(PDO::FETCH_OBJ);
 
 <!-- CONTENT CV -->
 <div class="row cv-box-content">
-    <article class="col offset-l2 offset-m1 offset-s1 l8 s10 m10 white z-depth-3">
+    <article class="col offset-l2 l8 s12 m12 white z-depth-3">
         <section class="col l12 m12 s12 center-align">
-            <img src="http://media.meltyfashion.fr/article-1482011-ajust_930/kristen-stewart-rayonnait-en-blonde.jpg" width="200px" alt="" class="circle responsive-img cv-img"> <!-- notice the "circle" class -->
+            <?php
+            $avatar = "user-folder/" . $_SESSION['auth']->pseudo . "/" . $_SESSION['auth']->pseudo . "_avatar.png";
+            if (file_exists($avatar)) {?>
+                <img src='<?php echo $avatar ?>' alt="profile image" class="circle responsive-img cv-img z-depth-2" style="width: 200px;border-radius: 100px;height: 200px;"> <!-- notice the "circle" class -->
+            <?php } else { ?>
+                <img src="img/avatar_unknow.png" alt="profile image" class="circle responsive-img cv-img z-depth-2" style="width: 200px;border-radius: 100px;height: 200px;"> <!-- notice the "circle" class -->
+            <?php } ?>
         </section>
         <section class="col l12 m12 s12 center-align">
             <h2><?= $data->pseudo ?></h2>
@@ -92,13 +98,13 @@ $data = $req->fetch(PDO::FETCH_OBJ);
                 </li>
             </ul>
         </section>
+        <section class="col l12 s12 m12 center-align cv-submit-bt">
+            <button class="btn waves-effect waves-light" type="submit" name="action">Engager
+                <i class="material-icons right">mail</i>
+            </button>
+        </section>
     </article>
 </div>
-<section class="col l12 s12 m12 center-align cv-submit-bt">
-    <button class="btn waves-effect waves-light" type="submit" name="action">Engager
-        <i class="material-icons right">mail</i>
-    </button>
-</section>
 <!-- CONTENT CV -->
 <div class="parallax-container parallax-little">
     <div class="parallax"><img src="https://images8.alphacoders.com/413/413114.jpg" style="display: block; transform: translate3d(-50%, 492px, 0px);"></div>

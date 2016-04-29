@@ -15,6 +15,8 @@ if (isset($_POST['envoyer'])) {
     $req = $DB->prepare("INSERT INTO messagerie SET destinataire= ?, expediteur= ?, sujet= ?, message= ?");
     $req->execute([$_POST['destinataire'], $_SESSION['login'], $_POST['sujet'], $_POST['Message']]);
     $user = $req->fetch(PDO::FETCH_OBJ);
+    $_SESSION['flash']['error'] = "Votre message à été envoyé";
+    header('location: compte.php');
 }
 
 if (isset($_GET['repondre'])) {
@@ -22,6 +24,8 @@ if (isset($_GET['repondre'])) {
     $req2 = $DB->prepare('SELECT * FROM messagerie WHERE id=?');
     $req2->execute([$_GET['id']]);
     $answer = $req2->fetch(PDO::FETCH_OBJ);
+    $_SESSION['flash']['error'] = "Votre message à été envoyé";
+    header('location: compte.php');
 
 }
 
@@ -72,22 +76,22 @@ if (isset($_GET['repondre'])) {
     <h2 class="header center-align title-blue">Envoyer un message</h2>
 </div>
 <div class="row">
-    <section class="white z-depth-3 col offset-l2 s12">
+    <section class="white z-depth-3 col offset-l2 l8 s12">
         <form action="send-mp.php" method="post" class="col s12">
             <div class="row">
-                <div class="input-field col offset-l2 s12" style="margin-top: 35px;">
+                <div class="input-field col offset-l2 l8 s12" style="margin-top: 35px;">
                     <input name="destinataire" id="destinataire" type="text" class="validate" value="<?php if (isset($_GET['repondre']) == 1){echo $answer->expediteur; } ?>" required="">
                     <label class="label-inscription" for="destinataire">Destinataire</label>
                 </div>
             </div>
             <div class="row">
-                <div class="input-field col offset-l2 s12">
+                <div class="input-field col offset-l2 l8 s12">
                     <input name="sujet" id="sujet" type="text" class="validate" required="">
                     <label class="label-inscription" for="sujet">Sujet</label>
                 </div>
             </div>
             <div class="row">
-                <div class="input-field col offset-l2 s12">
+                <div class="input-field col offset-l2 l8 s12">
                     <textarea id="Message" name="Message" class="materialize-textarea" required></textarea>
                     <label class="label-inscription" for="Message">Message</label>
                 </div>
