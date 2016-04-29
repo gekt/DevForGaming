@@ -20,6 +20,7 @@ $db_password =      "dhNJ7W476Z";
 
 try {
     $DB = new PDO('mysql:host=' . $db_ip . ';port=' . $db_port . ';dbname=' . $db_database, $db_username, $db_password);
+    $DB->exec('SET NAMES utf8');
 } catch (PDOException $e) {
     echo 'Erreur lors de la connexion à la base de données :<br><br>' . $e;
     die();

@@ -25,11 +25,11 @@ if (!isset($_SESSION['login'])){
 <body>
 
 <!-- Preloader V2 -->
-<!--<div id="loader-wrapper">
+<div id="loader-wrapper">
     <div id="loader"></div>
     <div class="loader-section section-left"></div>
     <div class="loader-section section-right"></div>
-</div>-->
+</div>
 
 <!-- INCLUDE NAVBAR -->
 <?php include 'include/navbar.php'; ?>
@@ -113,29 +113,29 @@ if (!isset($_SESSION['login'])){
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>Alvin</td>
-                            <td>Eclair</td>
-                            <td>$0.87</td>
-                        </tr>
-                        <tr>
-                            <td>Alan</td>
-                            <td>Jellybean</td>
-                            <td>$3.76</td>
-                        </tr>
-                        <tr>
-                            <td>Jonathan</td>
-                            <td>Lollipop</td>
-                            <td>$7.00</td>
-                        </tr>
-                        <tr>
-                            <td>Shannon</td>
-                            <td>KitKat</td>
-                            <td>$9.99</td>
-                        </tr>
+                        <?php
+                        require_once 'include/bdd.php';
+                        $req = $DB->prepare('SELECT * FROM cv WHERE pseudo= ?');
+                        $req->execute([$_SESSION['auth']->pseudo]);
+                        while ($d = $req->fetch(PDO::FETCH_OBJ)) {?>
+                            <tr>
+                                <td><?= $d->role ?></td>
+                                <td>12</td>
+                                <td><i class="material-icons">delete_forever</i></td>
+                            </tr>
+                        <?php }?>
                         </tbody>
                     </table>
                 </div>
+                <?php
+                require_once 'include/bdd.php';
+                $req2 = $DB->prepare('SELECT * FROM cv WHERE pseudo= ?');
+                $req2->execute([$_SESSION['auth']->pseudo]);
+                $a = $req2->fetch(PDO::FETCH_OBJ);
+                if ($a == null){ ?>
+                    <p class="center-align">Tu n'as aucun CV viens en poster un en cliquant <a href="add-cv.php">ici</a> !</p>
+                <?php }
+                ?>
             </div>
             <div id="test2" class="col s12">
                 <div class="col s12 m12 l12">
@@ -148,29 +148,29 @@ if (!isset($_SESSION['login'])){
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>Alvin & les j'sais plus quoi</td>
-                            <td>Eclair</td>
-                            <td>$0.87</td>
-                        </tr>
-                        <tr>
-                            <td>Alan</td>
-                            <td>Jellybean</td>
-                            <td>$3.76</td>
-                        </tr>
-                        <tr>
-                            <td>Jonathan</td>
-                            <td>Lollipop</td>
-                            <td>$7.00</td>
-                        </tr>
-                        <tr>
-                            <td>Shannon</td>
-                            <td>KitKat</td>
-                            <td>$9.99</td>
-                        </tr>
+                        <?php
+                        require_once 'include/bdd.php';
+                        $req3 = $DB->prepare('SELECT * FROM projet WHERE pseudo= ?');
+                        $req3->execute([$_SESSION['auth']->pseudo]);
+                        while ($v = $req3->fetch(PDO::FETCH_OBJ)) {?>
+                            <tr>
+                                <td><?= $v->titre_prjt ?></td>
+                                <td>12</td>
+                                <td><i class="material-icons">delete_forever</i></td>
+                            </tr>
+                        <?php }?>
                         </tbody>
                     </table>
                 </div>
+                <?php
+                require_once 'include/bdd.php';
+                $req4 = $DB->prepare('SELECT * FROM projet WHERE pseudo= ?');
+                $req4->execute([$_SESSION['auth']->pseudo]);
+                $j = $req4->fetch(PDO::FETCH_OBJ);
+                if ($j == null){ ?>
+                    <p class="center-align">Tu n'as aucun Projet viens en poster un en cliquant <a href="add-projet.php">ici</a> !</p>
+                <?php }
+                ?>
         </div>
     </div>
 </div>
@@ -202,9 +202,10 @@ if (!isset($_SESSION['login'])){
 <!-- SCRIPTS JS -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.4/SmoothScroll.min.js"></script>
 <script src='https://www.google.com/recaptcha/api.js'></script>
-<script type="text/javascript" src="js/index.js"></script>
+<?php include 'include/alert.php';?>WW
 
 </body>
 </html>

@@ -326,6 +326,8 @@ label {
 
 .label-inscription {
     padding-left: 0px !important;
+    font-weight: bolder !important;
+    font-size: 18px !important;
 }
 
 input:-webkit-autofill {
@@ -398,11 +400,87 @@ a {cursor: pointer;}
     overflow: hidden; /* les dépassements seront masqués */
 }
 
+.divider {
+    height: 1px;
+    overflow: hidden;
+    background-color: #e0e0e0;
+}
+
+.cv-box-content{
+    margin-top: 20px;
+}
+
+.cv-img {
+    margin: 20px;
+}
+
+.cv-pseudo {
+    margin-top: 60px;
+}
+
+.cv-submit-bt {
+    margin-bottom: 20px;
+}
+
+.cv-text {
+    font-size: 23px;
+}
+
+.cv-text-moyen {
+    font-size: 18px;
+}
+
+::-webkit-input-placeholder {
+    font-size: 20px;
+    color: #212121;
+}
+
+.styled-select {
+    font-size: 16px;
+    color: #212121;
+}
+select {
+    border: solid 1px black;
+}
+
+input {
+    font-size: 20px !important;
+    color: #212121;
+}
+
+textarea {
+    font-size: 22px !important;
+    color: #212121;
+}
+
+.title-collapse-cv {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.text-collapse-cv {
+    font-size: 20px;
+}
+
+.messagerie-content {
+    height: 450px;
+}
+
+.btn-ecrire {
+    margin-top: 30px !important;
+}
+
+.text-mp {
+    margin-top: -25px;
+    font-size: 23px;
+}
 @media screen and (max-width:975px) {
     .box-compte-contenu{
         margin-bottom: 20px;
     }
 }
+
+
 
 
 

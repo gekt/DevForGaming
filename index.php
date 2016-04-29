@@ -252,66 +252,28 @@
                     <div class="white center-align z-depth-2">
                         <h3 class="header title-blue">Derniers CVs</h3>
                         <ul class="collection border-left-right">
-                            <li class="collection-item avatar">
-                                <i class="material-icons circle">account_circle</i>
-                                <span class="title">Titre</span>
-                                <p>Catégorie</p>
-                                <a class="waves-effect waves-light btn light-blue secondary-content">voir<i class="material-icons right">send</i></a>
-                            </li>
-                            <li class="collection-item avatar">
-                                <i class="material-icons circle">account_circle</i>
-                                <span class="title">Titre</span>
-                                <p>Catégorie</p>
-                                <a class="waves-effect waves-light btn light-blue secondary-content">voir<i class="material-icons right">send</i></a>
-                            </li>
-                            <li class="collection-item avatar">
-                                <i class="material-icons circle green">account_circle</i>
-                                <span class="title">Titre</span>
-                                <p>Catégorie</p>
-                                <a class="waves-effect waves-light btn light-blue secondary-content">voir<i class="material-icons right">send</i></a>
-                            </li>
-                            <li class="collection-item avatar">
-                                <i class="material-icons circle red">account_circle</i>
-                                <span class="title">Titre</span>
-                                <p>Catégorie</p>
-                                <a class="waves-effect waves-light btn light-blue secondary-content">voir<i class="material-icons right">send</i></a>
-                            </li>
-                            <li class="collection-item avatar">
-                                <i class="material-icons circle red">account_circle</i>
-                                <span class="title">Titre</span>
-                                <p>Catégorie</p>
-                                <a class="waves-effect waves-light btn light-blue secondary-content">voir<i class="material-icons right">send</i></a>
-                            </li>
-                            <li class="collection-item avatar">
-                                <i class="material-icons circle red">account_circle</i>
-                                <span class="title">Titre</span>
-                                <p>Catégorie</p>
-                                <a class="waves-effect waves-light btn light-blue secondary-content">voir<i class="material-icons right">send</i></a>
-                            </li>
-                            <li class="collection-item avatar">
-                                <i class="material-icons circle red">account_circle</i>
-                                <span class="title">Titre</span>
-                                <p>Catégorie</p>
-                                <a class="waves-effect waves-light btn light-blue secondary-content">voir<i class="material-icons right">send</i></a>
-                            </li>
-                            <li class="collection-item avatar">
-                                <i class="material-icons circle red">account_circle</i>
-                                <span class="title">Titre</span>
-                                <p>Catégorie</p>
-                                <a class="waves-effect waves-light btn light-blue secondary-content">voir<i class="material-icons right">send</i></a>
-                            </li>
-                            <li class="collection-item avatar">
-                                <i class="material-icons circle red">account_circle</i>
-                                <span class="title">Titre</span>
-                                <p>Catégorie</p>
-                                <a class="waves-effect waves-light btn light-blue secondary-content">voir<i class="material-icons right">send</i></a>
-                            </li>
-                            <li class="collection-item avatar">
-                                <i class="material-icons circle red">account_circle</i>
-                                <span class="title">Titre</span>
-                                <p>Catégorie</p>
-                                <a class="waves-effect waves-light btn light-blue secondary-content">voir<i class="material-icons right">send</i></a>
-                            </li>
+                            <?php
+                            require_once 'include/bdd.php';
+                            $req = $DB->prepare('SELECT * FROM cv ORDER BY id DESC LIMIT 10');
+                            $req->execute();
+                            while ($d = $req->fetch(PDO::FETCH_OBJ)) {?>
+                                <li class="collection-item avatar">
+                                    <i class="material-icons circle">account_circle</i>
+                                    <span class="title"><?= $d->pseudo ?></span>
+                                    <p><?= $d->role ?></p>
+                                    <a onclick="changePage('cv.php?id=<?= $d->id ?>')" class="waves-effect waves-light btn light-blue secondary-content">voir<i class="material-icons right">send</i></a>
+                                </li>
+                            <?php }?>
+
+                            <?php
+                            require_once 'include/bdd.php';
+                            $req2 = $DB->prepare('SELECT * FROM cv ORDER BY id DESC LIMIT 10');
+                            $req2->execute();
+                            $a = $req2->fetch(PDO::FETCH_OBJ);
+                            if ($a == null){ ?>
+                                <p>Aucun CV viens poster le tiens en cliquant <a href="add-cv.php">ici</a> !</p>
+                            <?php }
+                            ?>
                         </ul>
                     </div>
                 </div>
@@ -319,66 +281,28 @@
                     <div class="white center-align z-depth-2">
                         <h3 class="header title-blue">Derniers Projets</h3>
                         <ul class="collection border-left-right">
-                            <li class="collection-item avatar">
-                                <i class="material-icons circle">account_circle</i>
-                                <span class="title">Titre</span>
-                                <p>Catégorie</p>
-                                <a class="waves-effect waves-light btn light-blue secondary-content">voir<i class="material-icons right">send</i></a>
-                            </li>
-                            <li class="collection-item avatar">
-                                <i class="material-icons circle">account_circle</i>
-                                <span class="title">Titre</span>
-                                <p>Catégorie</p>
-                                <a class="waves-effect waves-light btn light-blue secondary-content">voir<i class="material-icons right">send</i></a>
-                            </li>
-                            <li class="collection-item avatar">
-                                <i class="material-icons circle green">account_circle</i>
-                                <span class="title">Titre</span>
-                                <p>Catégorie</p>
-                                <a class="waves-effect waves-light btn light-blue secondary-content">voir<i class="material-icons right">send</i></a>
-                            </li>
-                            <li class="collection-item avatar">
-                                <i class="material-icons circle red">account_circle</i>
-                                <span class="title">Titre</span>
-                                <p>Catégorie</p>
-                                <a class="waves-effect waves-light btn light-blue secondary-content">voir<i class="material-icons right">send</i></a>
-                            </li>
-                            <li class="collection-item avatar">
-                                <i class="material-icons circle red">account_circle</i>
-                                <span class="title">Titre</span>
-                                <p>Catégorie</p>
-                                <a class="waves-effect waves-light btn light-blue secondary-content">voir<i class="material-icons right">send</i></a>
-                            </li>
-                            <li class="collection-item avatar">
-                                <i class="material-icons circle red">account_circle</i>
-                                <span class="title">Titre</span>
-                                <p>Catégorie</p>
-                                <a class="waves-effect waves-light btn light-blue secondary-content">voir<i class="material-icons right">send</i></a>
-                            </li>
-                            <li class="collection-item avatar">
-                                <i class="material-icons circle red">account_circle</i>
-                                <span class="title">Titre</span>
-                                <p>Catégorie</p>
-                                <a class="waves-effect waves-light btn light-blue secondary-content">voir<i class="material-icons right">send</i></a>
-                            </li>
-                            <li class="collection-item avatar">
-                                <i class="material-icons circle red">account_circle</i>
-                                <span class="title">Titre</span>
-                                <p>Catégorie</p>
-                                <a class="waves-effect waves-light btn light-blue secondary-content">voir<i class="material-icons right">send</i></a>
-                            </li>
-                            <li class="collection-item avatar">
-                                <i class="material-icons circle red">account_circle</i>
-                                <span class="title">Titre</span>
-                                <p>Catégorie</p>
-                                <a class="waves-effect waves-light btn light-blue secondary-content">voir<i class="material-icons right">send</i></a>
-                            </li>
-                            <li class="collection-item avatar">
-                                <i class="material-icons circle red">account_circle</i>
-                                <span class="title">Titre</span>
-                                <p>Catégorie</p>
-                                <a class="waves-effect waves-light btn light-blue secondary-content">voir<i class="material-icons right">send</i></a>
-                            </li>
+                            <?php
+                            require_once 'include/bdd.php';
+                            $req = $DB->prepare('SELECT * FROM projet ORDER BY id DESC LIMIT 10');
+                            $req->execute();
+                            while ($d = $req->fetch(PDO::FETCH_OBJ)) {?>
+                                <li class="collection-item avatar">
+                                    <i class="material-icons circle">account_circle</i>
+                                    <span class="title"><?= $d->titre_prjt ?></span>
+                                    <p><?= $d->jeu ?></p>
+                                    <a class="waves-effect waves-light btn light-blue secondary-content">voir<i class="material-icons right">send</i></a>
+                                </li>
+                            <?php }?>
+
+                            <?php
+                            require_once 'include/bdd.php';
+                            $req2 = $DB->prepare('SELECT * FROM projet ORDER BY id DESC LIMIT 10');
+                            $req2->execute();
+                            $a = $req2->fetch(PDO::FETCH_OBJ);
+                            if ($a == null){ ?>
+                                <p>Aucun Projet viens poster le tiens en cliquant <a href="add-projet.php">ici</a> !</p>
+                            <?php }
+                            ?>
                         </ul>
                     </div>
                 </div>
@@ -392,7 +316,7 @@
         <script type="text/javascript" src="js/materialize.min.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.4/SmoothScroll.min.js"></script>
-
+        <?php include 'include/alert.php';?>
     </body>
 </html>
 

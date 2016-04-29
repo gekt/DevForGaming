@@ -127,3 +127,19 @@ function animateSubtitle2(id, animationNameIn, animationNameOut, time) {
         }, time);
     });
 };
+
+//CV JS
+// Initializations
+$('.tooltipped').tooltip();
+$('.modal-trigger').leanModal();
+// Accordion
+$('.accordion').collapsible({
+    accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+});
+// Interaction
+$('.collapsible-header').click(function() {
+    $('.collapsible-header').addClass('grey-text').removeClass('blue-grey-text text-darken-1').children('.icon').removeClass('pink-text text-lighten-4');
+    $(this).addClass('blue-grey-text text-darken-1').removeClass('grey-text').children('.icon').addClass('pink-text text-lighten-4');
+});
+
+//FIN CV JS

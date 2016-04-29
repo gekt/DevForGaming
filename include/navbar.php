@@ -10,8 +10,9 @@
                 <li><a onclick="changePage('register.php')"><i class="material-icons" title="M'inscrire">mode_edit</i></a></li>
                 <?php } ?>
                 <?php if (isset($_SESSION['login'])){?>
-                    <li><a class="waves-effect waves-light btn" onclick="changePage('compte.php')">Nouveau CV</a></li>
-                    <li><a class="waves-effect waves-light btn" onclick="changePage('compte.php')">Nouveau Projet</a></li>
+                    <li><a class="waves-effect waves-light btn" onclick="changePage('add-cv.php')">Ajouter mon CV</a></li>
+                    <li><a class="waves-effect waves-light btn" onclick="changePage('compte.php')">Ajouter mon Projet</a></li>
+                    <li><a onclick="changePage('messagerie.php')"><i class="material-icons" title="Messagerie">mail</i></a></li>
                     <li><a onclick="changePage('compte.php')"><i class="material-icons" title="Mon compte">person</i></a></li>
                     <!--<li><a class="dropdown-button" href="#!" data-activates="dropdown1"><i class="material-icons">add</i></a></li>-->
                     <!--<li><a href="upload-module.php"><i class="material-icons">cloud_upload</i></a></li>-->
@@ -29,6 +30,9 @@
                 <li><a onclick="changePage('register.php')">S'inscrire</a></li>
                 <?php } ?>
                 <?php if (isset($_SESSION['login'])){?>
+                    <li><a onclick="changePage('add-cv.php')">Ajouter mon CV</a></li>
+                    <li><a onclick="changePage('messagerie.php')">Ajouter mon Projet</a></li>
+                <li><a onclick="changePage('messagerie.php')">Messagerie</a></li>
                 <li><a onclick="changePage('compte.php')">Mon compte</a></li>
                 <li><a onclick="changePage('logout.php')">Deconnexion</a></li>
                 <?php } ?>
@@ -59,3 +63,4 @@
     	</div>
   	</nav>
 </div>
+
