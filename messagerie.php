@@ -65,7 +65,7 @@ if (!isset($_SESSION['login'])){
     $user = $req->fetch(PDO::FETCH_OBJ);
     ?>
     <div class="col s12">
-        <div class="white col z-depth-3 offset-l1 l10 m12 s12">
+        <div class="white col z-depth-3 offset-l1 l10 m12 s12 tabs-text-medium">
             <ul class="tabs">
                 <li class="tab col s6"><a class="active" href="#msg_received">Message(s) reçu(s)</a></li>
                 <li class="tab col s6"><a href="#msg_sent">Message(s) envoyé(s)</a></li>
@@ -73,8 +73,8 @@ if (!isset($_SESSION['login'])){
         </div>
     </div>
     <div class="col s12">
-        <section id="msg_received" style="overflow: auto;" class="messagerie z-depth-3 white col offset-l1 l10 m12 s12 messagerie-content">
-            <table class="bordered">
+        <section id="msg_received" class="messagerie z-depth-3 white col offset-l1 l10 m12 s12 messagerie-content">
+            <table class="bordered centered">
                 <thead>
                 <tr>
                     <th>Sujet</th>
@@ -88,33 +88,72 @@ if (!isset($_SESSION['login'])){
                 <tbody>
                 <?php
                 require_once 'include/bdd.php';
-                $req = $DB->prepare('SELECT * FROM messagerie WHERE destinataire=? AND hidden=0 ORDER BY id DESC');
+                $nbParPage = 6;
+                $req = $DB->prepare('SELECT COUNT(*) AS nb_messages FROM messagerie WHERE destinataire=? AND hidden=0');
+                $req->execute([$_SESSION['auth']->pseudo]);
+                $data = $req->fetch(PDO::FETCH_OBJ);
+                $total_msg = $data->nb_messages;
+
+                if (isset($_GET['page'])) {
+                    $page = $_GET['page'];
+                } else {
+                    $page = 1;
+                }
+
+                $nbPages = ceil($total_msg / $nbParPage);
+                $first_msg = ($page - 1) * $nbParPage;
+                $req = $DB->prepare('SELECT * FROM messagerie WHERE destinataire=? AND hidden=0 ORDER BY id DESC LIMIT ' . $first_msg . ', ' . $nbParPage . '');
                 $req->execute([$_SESSION['auth']->pseudo]);
                     while ($d = $req->fetch(PDO::FETCH_OBJ)) {?>
                         <tr>
                             <td><?= $d->sujet ?></td>
                             <td><?= $d->expediteur ?></td>
                             <?php if ($d->lu == 1) { ?>
-                            <td><i class="red-text text-darken-2 material-icons tooltipped" data-position="right" data-delay="50" data-tooltip="Nouveau !">new_releases</i></td>
+                            <td><i style="cursor: pointer;" class="blue-text material-icons tooltipped" data-position="right" data-delay="50" data-tooltip="Nouveau !">new_releases</i></td>
                             <?php }else { ?>
-                            <td><i class="green-text material-icons tooltipped" data-position="right" data-delay="50" data-tooltip="Lu !">done</i></td>
+                            <td><i style="cursor: pointer;" class="green-text material-icons tooltipped" data-position="right" data-delay="50" data-tooltip="Lu !">done</i></td>
                             <?php } ?>
                             <td><?= date('d/m/y à H:i:s', $d->time); ?></td>
-                            <td><a href="read.php?id=<?= $d->id ?>" title="Lire le message"><i class="material-icons">remove_red_eye</i></a><a href="delete-mp.php?id=<?= $d->id ?>" title="Supprimer le message"><i class="material-icons">delete_forever</i></a><a href="send-mp.php?id=<?= $d->id ?>&repondre=1" title="Repondre"><i class="material-icons">send</i></a></td>
+                            <td>
+                                <a class="waves-effect waves-teal btn-flat grey-text text-darken-2 tooltipped" onclick="changePage('read.php?id=<?= $d->id ?>')" data-position="top" data-delay="50" data-tooltip="Lire"><i class="material-icons">remove_red_eye</i></a>
+                                <a class="waves-effect waves-red btn-flat grey-text text-darken-2 tooltipped" onclick="changePage('delete-mp.php?id=<?= $d->id ?>')" data-position="top" data-delay="50" data-tooltip="Supprimer"><i class="material-icons">delete_forever</i></a>
+                                <a class="waves-effect waves-green btn-flat grey-text text-darken-2 tooltipped" onclick="changePage('send-mp.php?id=<?= $d->id ?>&repondre=1')" data-position="top" data-delay="50" data-tooltip="Répondre"><i class="material-icons">reply</i></a>
+                            </td>
                         </tr>
                 <?php } ?>
                 </tbody>
             </table>
-            <?php $req = $DB->prepare('SELECT * FROM messagerie WHERE destinataire=? AND hidden=0');
+            <ul class="pagination center-align"> <?php
+            if ($total_msg != 0) {
+                if ($page == 1) { ?>
+                    <li class="disabled"><a><i class="material-icons">chevron_left</i></a></li> <?php
+                } else { ?>
+                    <li class="waves-effect" onclick="changePage('messagerie.php?page=<?= $page - 1 ?>#msg_received')"><a><i class="material-icons">chevron_left</i></a></li> <?php
+                }
+                for ($i = 1; $i <= $nbPages ; $i++) { 
+                    if ($i == $page) { ?>
+                            <li class="active"><a><?= $i ?></a></li> <?php
+                        } else { ?>
+                        <li class="waves-effect" onclick="changePage('messagerie.php?page=<?= $i ?>#msg_received')"><?= $i ?></li> <?php
+                    }
+                }
+                if ($page == $nbPages) { ?>
+                    <li class="disabled"><a><i class="material-icons">chevron_right</i></a></li> <?php
+                } else { ?>
+                    <li class="waves-effect" onclick="changePage('messagerie.php?page=<?= $page + 1 ?>#msg_received')"><a><i class="material-icons">chevron_right</i></a></li> <?php
+                } ?>
+                </ul>
+            <?php }
+
+            $req = $DB->prepare('SELECT * FROM messagerie WHERE destinataire=? AND hidden=0');
             $req->execute([$_SESSION['auth']->pseudo]);
             $d = $req->fetch(PDO::FETCH_OBJ);
             if ($d == null){?>
                 <p class="center-align">Aucun message</p>
             <?php } ?>
-            <a class="waves-effect waves-light btn btn-ecrire" onclick="changePage('send-mp.php')">Ecrire</a>
         </section>
-        <section id="msg_sent" style="overflow: auto;" class="messagerie z-depth-3 white col offset-l1 l10 m12 s12 messagerie-content">
-            <table class="bordered">
+        <section id="msg_sent" class="messagerie z-depth-3 white col offset-l1 l10 m12 s12 messagerie-content">
+            <table class="bordered centered">
                 <thead>
                 <tr>
                     <th>Sujet</th>
@@ -128,7 +167,21 @@ if (!isset($_SESSION['login'])){
                 <tbody>
                 <?php
                 require_once 'include/bdd.php';
-                $req = $DB->prepare('SELECT * FROM messagerie WHERE expediteur=? ORDER BY id DESC');
+                $nbParPage = 6;
+                $req = $DB->prepare('SELECT COUNT(*) AS nb_messages FROM messagerie WHERE expediteur=? AND hidden=0');
+                $req->execute([$_SESSION['auth']->pseudo]);
+                $data = $req->fetch(PDO::FETCH_OBJ);
+                $total_msg = $data->nb_messages;
+
+                if (isset($_GET['page'])) {
+                    $page = $_GET['page'];
+                } else {
+                    $page = 1;
+                }
+
+                $nbPages = ceil($total_msg / $nbParPage);
+                $first_msg = ($page - 1) * $nbParPage;
+                $req = $DB->prepare('SELECT * FROM messagerie WHERE expediteur=? ORDER BY id DESC LIMIT ' . $first_msg . ', ' . $nbParPage . '');
                 $req->execute([$_SESSION['auth']->pseudo]);
                     while ($d = $req->fetch(PDO::FETCH_OBJ)) {?>
                         <tr>
@@ -136,23 +189,48 @@ if (!isset($_SESSION['login'])){
                             <td><?= $d->destinataire ?></td>
 
                             <?php if ($d->lu == 1) { ?>
-                            <td><i class="red-text text-darken-4 material-icons tooltipped" data-position="right" data-delay="50" data-tooltip="Non-lu !">priority_high</i></td>
+                            <td><i style="cursor: pointer;" class="red-text text-darken-4 material-icons tooltipped" data-position="right" data-delay="50" data-tooltip="Non-lu !">priority_high</i></td>
                             <?php } else { ?>
-                            <td><i class="green-text material-icons tooltipped" data-position="right" data-delay="50" data-tooltip="Lu !">done</i></td>
+                            <td><i style="cursor: pointer;" class="green-text material-icons tooltipped" data-position="right" data-delay="50" data-tooltip="Lu !">done</i></td>
                             <?php } ?>
                             <td><?= date('d/m/y à H:i:s', $d->time); ?></td>
-                            <td><a href="read.php?id=<?= $d->id ?>" title="Lire le message"><i class="material-icons">remove_red_eye</i></a></td>
+                            <td><a class="waves-effect waves-teal btn-flat grey-text text-darken-2 tooltipped" onclick="changePage('read.php?id=<?= $d->id ?>')" data-position="top" data-delay="50" data-tooltip="Lire"><i class="material-icons">remove_red_eye</i></a></td>
                         </tr>
                 <?php } ?>
                 </tbody>
             </table>
-            <?php $req = $DB->prepare('SELECT * FROM messagerie WHERE expediteur=?');
+            <ul class="pagination center-align"> <?php
+            if ($total_msg != 0) {
+                if ($page == 1) { ?>
+                    <li class="disabled"><a><i class="material-icons">chevron_left</i></a></li> <?php
+                } else { ?>
+                    <li class="waves-effect" onclick="changePage('messagerie.php?page=<?= $page - 1 ?>#msg_sent')"><a><i class="material-icons">chevron_left</i></a></li> <?php
+                }
+                for ($i = 1; $i <= $nbPages ; $i++) { 
+                    if ($i == $page) { ?>
+                            <li class="active"><a><?= $i ?></a></li> <?php
+                        } else { ?>
+                        <li class="waves-effect" onclick="changePage('messagerie.php?page=<?= $i ?>#msg_sent')"><?= $i ?></li> <?php
+                    }
+                }
+                if ($page == $nbPages) { ?>
+                    <li class="disabled"><a><i class="material-icons">chevron_right</i></a></li> <?php
+                } else { ?>
+                    <li class="waves-effect" onclick="changePage('messagerie.php?page=<?= $page + 1 ?>#msg_sent')"><a><i class="material-icons">chevron_right</i></a></li> <?php
+                } ?>
+                </ul>
+            <?php }
+            $req = $DB->prepare('SELECT * FROM messagerie WHERE expediteur=?');
             $req->execute([$_SESSION['auth']->pseudo]);
             $d = $req->fetch(PDO::FETCH_OBJ);
             if ($d == null){?>
                 <p class="center-align">Aucun message envoyé</p>
             <?php } ?>
+
         </section>
+        <div class="fixed-action-btn" style="bottom: 24px; right: 24px;">
+            <a class="btn-floating btn-large waves-effect waves-light green tooltipped" onclick="changePage('send-mp.php')" data-position="left" data-emplacement="fixed" data-delay="50" data-tooltip="Nouveau message"><i class="material-icons">send</i></a>
+        </div>
     </div>
 </div>
 <div class="parallax-container parallax-little">

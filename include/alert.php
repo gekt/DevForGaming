@@ -19,7 +19,7 @@
                 } if ($i >= 1){?>
                     <script type="text/javascript"> setTimeout(function () {
                             Materialize.toast('Vous avez ' + <?= $i ?> + ' nouveau(x) message(s)', 6000, 'rounded')
-                        }, 1900)// 'rounded' is the class I'm applying to the toast </script>
+                        }, 1900)</script>
                 <?php }
             }
         }
@@ -31,7 +31,7 @@
             <?php foreach($_SESSION['flash'] as $type => $message): ?>
                 <script type="text/javascript"> setTimeout(function () {
                         Materialize.toast(' <?= $message; ?> ', 6000, 'rounded')
-                    }, 1900)// 'rounded' is the class I'm applying to the toast </script>
+                    }, 1900)</script>
             <?php endforeach; ?>
             <?php unset($_SESSION['flash']); ?>
         <?php endif; ?>

@@ -17,7 +17,8 @@ if (!empty($_POST)) {
     else {
 
         $DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $req = $DB->query('SELECT * FROM membres WHERE pseudo="' . $_POST["pseudo"] . '"');
+        $req = $DB->query('SELECT * FROM membres WHERE pseudo=?');
+        $req->execute([$_POST["pseudo"]]);
         while ($d = $req->fetch(PDO::FETCH_OBJ)) {
             $login = $d->pseudo;
         }
@@ -51,6 +52,3 @@ if (!empty($_POST)) {
         }
     }
 }
-
-?>
-

@@ -7,7 +7,6 @@
     session_start();
     require_once 'include/bdd.php';
     require_once 'include/functions.php';
-    //var_dump($_POST);
 ?>
 
 <!DOCTYPE html>
@@ -58,36 +57,36 @@
         <div class="row">
             <?php if (isset($_POST['choice'])) {
                 if ($_POST['choice'] == "cv") {
-                    $req = $DB->prepare("SELECT * FROM cv WHERE pseudo=? OR jeu=?");
-                    $req->execute([$_POST["search"], $_POST["search"]]);
-                    while ($cv = $req->fetch(PDO::FETCH_OBJ)) { ?>
-                        <div class="col l3">
-                            <div class="card">
-                                <div class="card-image waves-effect waves-block waves-light">
-                                    <img class="activator" src="img/parallax1.jpg">
-                                </div>
-                                <div class="card-content">
-                                    <span class="card-title activator grey-text text-darken-4"><?= $cv->pseudo ?><i class="material-icons right">more_vert</i></span>
-                                    <p><a onclick="changePage('cv.php?id=<?= $cv->id ?>')">Voir plus</a></p>
-                                </div>
-                                <div class="card-reveal">
-                                    <span class="card-title grey-text text-darken-4"><?= $cv->pseudo ?><i class="material-icons right">close</i></span>
-                                    <p><?= $cv->desc_perso ?></p>
-                                </div>
-                            </div>
-                        </div> <?php
-                    }
-                    $req->execute([$_POST["search"], $_POST["search"]]);
+                    $req = $DB->prepare("SELECT * FROM cv WHERE pseudo LIKE ? OR jeu LIKE ?");
+                    $req->execute(["%" . $_POST["search"] . "%", "%" . $_POST["search"] . "%"]); ?>
+                    <div class="col offset-l2 l8 m12 s12">
+                        <div class="white center-align z-depth-2">
+                            <ul class="collection border-left-right"> <?php
+                                while ($cv = $req->fetch(PDO::FETCH_OBJ)) {
+                                    $avatar = "user-folder/" . $cv->pseudo . "/" . $cv->pseudo . "_avatar.png"; ?>
+
+                                    <li class="collection-item avatar">
+                                        <img class="circle" src="<?php echo $avatar ?>">
+                                        <p><?= $cv->pseudo ?></p>
+                                        <p><?= $cv->role ?></p>
+                                        <p><?= $cv->jeu ?></p>
+                                        <a onclick="changePage('cv.php?id=<?= $cv->id ?>')" class="waves-effect waves-light btn light-blue secondary-content">voir<i class="material-icons right">send</i></a>
+                                    </li> <?php
+                                } ?>
+                            </ul>
+                        </div>
+                    </div> <?php
+                    $req->execute(["%" . $_POST["search"] . "%", "%" . $_POST["search"] . "%"]);
                     $cv = $req->fetch(PDO::FETCH_OBJ);
                     if ($cv == null) { ?>
                         <p class="center-align">Aucun résultat, fromage.</p> <?php
                     }
                 }
                 elseif ($_POST['choice'] == "jeu") {
-                    $req1 = $DB->prepare("SELECT * FROM cv WHERE jeu=?");
-                    $req2 = $DB->prepare("SELECT * FROM projet WHERE jeu=?");
-                    $req1->execute([$_POST["search"]]);
-                    $req2->execute([$_POST["search"]]);
+                    $req1 = $DB->prepare("SELECT * FROM cv WHERE jeu LIKE ?");
+                    $req2 = $DB->prepare("SELECT * FROM projet WHERE jeu LIKE ?");
+                    $req1->execute(["%" . $_POST["search"] . "%"]);
+                    $req2->execute(["%" . $_POST["search"] . "%"]);
                     while ($jeu1 = $req1->fetch(PDO::FETCH_OBJ)) { ?>
                         <div class="col l3">
                             <div class="card">
@@ -122,8 +121,8 @@
                             </div>
                         </div> <?php
                     }
-                    $req1->execute([$_POST["search"]]);
-                    $req2->execute([$_POST["search"]]);
+                    $req1->execute(["%" . $_POST["search"] . "%"]);
+                    $req2->execute(["%" . $_POST["search"] . "%"]);
                     $jeu1 = $req1->fetch(PDO::FETCH_OBJ);
                     $jeu2 = $req2->fetch(PDO::FETCH_OBJ);
                     if ( ($jeu1 == null) && ($jeu2 == null) ) { ?>
@@ -131,8 +130,8 @@
                     }
                 }
                 elseif ($_POST['choice'] == "projet") {
-                    $req = $DB->prepare("SELECT * FROM projet WHERE pseudo=? OR titre_prjt=? OR jeu=?");
-                    $req->execute([$_POST["search"], $_POST["search"], $_POST["search"]]);
+                    $req = $DB->prepare("SELECT * FROM projet WHERE pseudo LIKE ? OR titre_prjt LIKE ? OR jeu LIKE ?");
+                    $req->execute(["%" . $_POST["search"] . "%", "%" . $_POST["search"] . "%", "%" . $_POST["search"] . "%"]);
                     while ($projet = $req->fetch(PDO::FETCH_OBJ)) { ?>
                         <div class="col l3">
                             <div class="card">
@@ -150,11 +149,52 @@
                             </div>
                         </div> <?php
                     }
-                    $req->execute([$_POST["search"], $_POST["search"], $_POST["search"]]);
+                    $req->execute(["%" . $_POST["search"] . "%", "%" . $_POST["search"] . "%", "%" . $_POST["search"] . "%"]);
                     $projet = $req->fetch(PDO::FETCH_OBJ);
                     if ($projet == null) { ?>
                         <p class="center-align">Aucun résultat, fromage.</p> <?php
                     }
+                }
+            } elseif ($_POST['search'] != null) {
+                echo 'lol';
+            } else { 
+                $req1 = $DB->prepare("SELECT * FROM cv ORDER BY RAND() LIMIT 10");
+                $req2 = $DB->prepare("SELECT * FROM projet ORDER BY RAND() LIMIT 10");
+                $req1->execute();
+                $req2->execute();
+                while ($cv = $req1->fetch(PDO::FETCH_OBJ)) { ?>
+                    <div class="col l3">
+                        <div class="card">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img class="activator" src="img/parallax1.jpg">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4"><?= $cv->pseudo ?><i class="material-icons right">more_vert</i></span>
+                                <p><a onclick="changePage('cv.php?id=<?= $cv->id ?>')">Voir plus</a></p>
+                            </div>
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-darken-4"><?= $cv->pseudo ?><i class="material-icons right">close</i></span>
+                                <p><?= $cv->desc_perso ?></p>
+                            </div>
+                        </div>
+                    </div> <?php
+                }
+                while ($projet = $req2->fetch(PDO::FETCH_OBJ)) { ?>
+                    <div class="col l3">
+                        <div class="card">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img class="activator" src="img/parallax1.jpg">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4"><?= $projet->titre_prjt ?><i class="material-icons right">more_vert</i></span>
+                                <p><a onclick="changePage('projet.php?id=<?= $projet->id ?>')">Voir plus</a></p>
+                            </div>
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-darken-4"><?= $projet->titre_prjt ?><i class="material-icons right">close</i></span>
+                                <p><?= $projet->desc_prjt ?></p>
+                            </div>
+                        </div>
+                    </div> <?php
                 }
             } ?>
         </div>

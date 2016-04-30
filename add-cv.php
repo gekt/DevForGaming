@@ -21,7 +21,6 @@ if (isset($_POST['addcv'])) {
     header('location: compte.php');
 }
 
-
 ?>
 
 <!DOCTYPE html>
@@ -78,7 +77,7 @@ if (isset($_POST['addcv'])) {
             </div>
             <div class="row">
                 <div class="input-field col offset-l2 offset-m2 l8 m8 s12">
-                    <select class="styled-select" name="niveau" required>
+                    <select class="styled-select" name="niveau" title="" required>
                         <option value="" disabled selected>Sélectionnez votre niveau</option>
                         <option value="débutant">Débutant</option>
                         <option value="amateur">Amateur</option>
@@ -101,7 +100,7 @@ if (isset($_POST['addcv'])) {
             </div>
             <div class="row">
                 <div class="input-field col offset-l2 offset-m2 l8 m8 s12">
-                    <textarea id="desc_prjt0" name="desc_prjt" class="materialize-textarea" required></textarea>
+                    <textarea id="desc_prjt0" name="desc_prjt" class="materialize-textarea" required title=""></textarea>
                     <label class="label-inscription" for="desc_prjt">Description du projet que vous recherchez</label>
                 </div>
             </div>
