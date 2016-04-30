@@ -16,6 +16,14 @@ $req = $DB->prepare("SELECT * FROM cv WHERE id= ?");
 $req->execute([$_GET['id']]);
 $data = $req->fetch(PDO::FETCH_OBJ);
 
+if (isset($_POST['engager'])) {
+    require_once 'include/bdd.php';
+    $time_now = mktime(date("H"), date("i"), date("s"), date("m"), date("d"), date("Y"));
+    $req2 = $DB->prepare("INSERT INTO messagerie SET destinataire= ?, expediteur= ?, sujet= ?, message= ?, time= ?");
+    $req2->execute([$_POST['destinataire'], $_SESSION['auth']->pseudo, $_POST['sujet'], $_POST['message'], $time_now]);
+    $_SESSION['flash']['success'] = "Offre envoyée";
+    header('location: messagerie.php');
+}
 
 ?>
 
@@ -30,6 +38,7 @@ $data = $req->fetch(PDO::FETCH_OBJ);
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
     <link rel="stylesheet" type="text/css" href="css/animate.css">
     <link type="text/css" rel="stylesheet" href="css/custom.css" media="screen,projection"/>
+    <script type="text/javascript" src="http://download.skype.com/share/skypebuttons/js/skypeCheck.js"></script>
 </head>
 <body>
 
@@ -99,11 +108,11 @@ $data = $req->fetch(PDO::FETCH_OBJ);
                 </li>
             </ul>
         </section>
+        <?php if ($data->id_user != $_SESSION['auth']->id){ ?>
         <section class="col l12 s12 m12 center-align cv-submit-bt">
-            <button class="btn waves-effect waves-light" type="submit" name="action">Engager
-                <i class="material-icons right">mail</i>
-            </button>
+            <a data-target="modal_engager" class="waves-effect waves-light btn modal-trigger">Engager<i class="material-icons right">mail</i></a>
         </section>
+        <?php } ?>
     </article>
 </div>
 <!-- CONTENT CV -->
@@ -112,6 +121,7 @@ $data = $req->fetch(PDO::FETCH_OBJ);
 </div>
 
 <!-- FOOTER -->
+<?php include 'include/modal/engager.php';?>
 <?php include 'include/footer.php';?>
 
 <!-- SCRIPTS JS -->

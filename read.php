@@ -9,10 +9,17 @@ session_start();
 if (!isset($_SESSION['login'])){
     header('Location: index.php');
 }
-require_once 'include/bdd.php';
-$req = $DB->prepare("UPDATE messagerie SET lu=0 WHERE id= ?");
-$req->execute([$_GET['id']]);
 
+
+
+require_once 'include/bdd.php';
+$req1 = $DB->prepare("SELECT * FROM messagerie WHERE id= ?");
+$req1->execute([$_GET['id']]);
+$owner = $req1->fetch(PDO::FETCH_OBJ);
+if ($owner->destinataire == $_SESSION['auth']->pseudo) {
+    $req2 = $DB->prepare("UPDATE messagerie SET lu=0 WHERE id= ?");
+    $req2->execute([$_GET['id']]);
+}
 
 ?>
 

@@ -73,7 +73,7 @@ if (!isset($_SESSION['login'])){
         </div>
     </div>
     <div class="col s12">
-        <section id="msg_received" class="messagerie z-depth-3 white col offset-l1 l10 m12 s12 messagerie-content">
+        <section id="msg_received" style="overflow: auto;" class="messagerie z-depth-3 white col offset-l1 l10 m12 s12 messagerie-content">
             <table class="bordered">
                 <thead>
                 <tr>
@@ -88,7 +88,7 @@ if (!isset($_SESSION['login'])){
                 <tbody>
                 <?php
                 require_once 'include/bdd.php';
-                $req = $DB->prepare('SELECT * FROM messagerie WHERE destinataire=? AND hidden=0');
+                $req = $DB->prepare('SELECT * FROM messagerie WHERE destinataire=? AND hidden=0 ORDER BY id DESC');
                 $req->execute([$_SESSION['auth']->pseudo]);
                     while ($d = $req->fetch(PDO::FETCH_OBJ)) {?>
                         <tr>
@@ -113,7 +113,7 @@ if (!isset($_SESSION['login'])){
             <?php } ?>
             <a class="waves-effect waves-light btn btn-ecrire" onclick="changePage('send-mp.php')">Ecrire</a>
         </section>
-        <section id="msg_sent" class="messagerie z-depth-3 white col offset-l1 l10 m12 s12 messagerie-content">
+        <section id="msg_sent" style="overflow: auto;" class="messagerie z-depth-3 white col offset-l1 l10 m12 s12 messagerie-content">
             <table class="bordered">
                 <thead>
                 <tr>
@@ -128,7 +128,7 @@ if (!isset($_SESSION['login'])){
                 <tbody>
                 <?php
                 require_once 'include/bdd.php';
-                $req = $DB->prepare('SELECT * FROM messagerie WHERE expediteur=?');
+                $req = $DB->prepare('SELECT * FROM messagerie WHERE expediteur=? ORDER BY id DESC');
                 $req->execute([$_SESSION['auth']->pseudo]);
                     while ($d = $req->fetch(PDO::FETCH_OBJ)) {?>
                         <tr>

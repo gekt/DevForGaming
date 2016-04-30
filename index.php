@@ -262,8 +262,9 @@
 
                                 <li class="collection-item avatar">
                                     <img class="circle" src="<?php echo $avatar ?>"></i>
-                                    <span class="title"><?= $d->pseudo ?></span>
+                                    <p><?= $d->pseudo ?></p>
                                     <p><?= $d->role ?></p>
+                                    <p><?= $d->jeu ?></p>
                                     <a onclick="changePage('cv.php?id=<?= $d->id ?>')" class="waves-effect waves-light btn light-blue secondary-content">voir<i class="material-icons right">send</i></a>
                                 </li>
                             <?php } ?>
