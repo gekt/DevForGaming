@@ -1,3 +1,13 @@
 # DevForGaming
 
-DevForGaming a pour but d'aider les projets à ce concrétiser et permettre au gens de rejoindre des projets qui ont besoin d'aide en postant leur CVs. 
+DevForGaming a pour but d'aider les projets à ce concrétiser et permettre au gens de rejoindre des projets qui ont besoin d'aide en postant leur CVs.
+
+
+ _______   ___________    ____  _______   ______   .______        _______      ___      .___  ___.  __  .__   __.   _______ 
+|       \ |   ____\   \  /   / |   ____| /  __  \  |   _  \      /  _____|    /   \     |   \/   | |  | |  \ |  |  /  _____|
+|  .--.  ||  |__   \   \/   /  |  |__   |  |  |  | |  |_)  |    |  |  __     /  ^  \    |  \  /  | |  | |   \|  | |  |  __  
+|  |  |  ||   __|   \      /   |   __|  |  |  |  | |      /     |  | |_ |   /  /_\  \   |  |\/|  | |  | |  . `  | |  | |_ | 
+|  '--'  ||  |____   \    /    |  |     |  `--'  | |  |\  \----.|  |__| |  /  _____  \  |  |  |  | |  | |  |\   | |  |__| | 
+|_______/ |_______|   \__/     |__|      \______/  | _| `._____| \______| /__/     \__\ |__|  |__| |__| |__| \__|  \______| 
+                                                                                                                            
+
