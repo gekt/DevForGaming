@@ -1,6 +1,21 @@
+<?php
+    if (isset($_SESSION['login'])) {
+        require_once 'bdd.php';
+        $req = $DB->prepare("SELECT * FROM messagerie WHERE destinataire= ?");
+        $req->execute([$_SESSION['auth']->pseudo]);
+        $i = 0;
+        while ($unread = $req->fetch(PDO::FETCH_OBJ)) {
+            if ($unread->lu == 1) {
+                $i = ++$i;
+            }
+        }
+    }
+    $dontshownewmsg = false;
+?>
+
 <!-- NAVBAR -->
 <div class="navbar-fixed">
-    <nav class="orange">
+    <nav class="color-gray">
         <div class="nav-wrapper container">
             <a onclick="changePage('index.php')" class="brand-logo">DevForGaming</a>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -12,11 +27,24 @@
                 <?php if (isset($_SESSION['login'])){?>
                     <li><a class="waves-effect waves-light btn" onclick="changePage('add-cv.php')">Ajouter mon CV</a></li>
                     <li><a class="waves-effect waves-light btn" onclick="changePage('compte.php')">Ajouter mon Projet</a></li>
-                    <li><a onclick="changePage('messagerie.php')"><i class="material-icons" title="Messagerie">mail</i></a></li>
-                    <li><a onclick="changePage('compte.php')"><i class="material-icons" title="Mon compte">person</i></a></li>
+                    <li>
+                        <a onclick="changePage('messagerie.php')" class="tooltipped" data-position="bottom" data-emplacement="fixed" data-delay="50" data-tooltip="Messagerie">
+                            <i class="material-icons">mail</i>
+                            <?php if ($i >= 1) { ?>
+                            <div class="new-msg-bubble">
+                                <span class="new-msg-text"><?= $i ?></span>
+                            </div>
+                            <?php } ?>
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="changePage('compte.php')" class="tooltipped" data-position="bottom" data-emplacement="fixed" data-delay="50" data-tooltip="Mon compte">
+                            <i class="material-icons">person</i>
+                        </a>
+                    </li>
                     <!--<li><a class="dropdown-button" href="#!" data-activates="dropdown1"><i class="material-icons">add</i></a></li>-->
                     <!--<li><a href="upload-module.php"><i class="material-icons">cloud_upload</i></a></li>-->
-                    <li><a onclick="changePage('logout.php')"><i class="material-icons" title="Me déconnecter">power_settings_new</i></a></li>
+                    <li><a onclick="changePage('logout.php')" class="tooltipped" data-position="bottom" data-emplacement="fixed" data-delay="50" data-tooltip="Se déconnecter"><i class="material-icons">power_settings_new</i></a></li>
                 <?php } ?>
             </ul>
             <ul class="side-nav" id="mobile-demo">
@@ -43,11 +71,11 @@
 
 <!-- BARRE DE RECHERCHE V2 -->
 <div class="row para-main">
-  	<nav class="orange lighten-2 flat hide-on-med-and-down">
+  	<nav class="color-gray-lighter flat hide-on-med-and-down">
     	<div class="nav-wrapper">
       		<form id="recherche" action="search.php" method="post">
         		<div id="search-div" class="input-field">
-          			<input id="search" type="search">
+          			<input id="search" name="search" type="search">
           			<label id="search-active-detect" for="search" type="submit"><i id="search-logo" class="material-icons ico-search">search</i></label>
           			<div id="div-search-label" class="right valign-wrapper" style="right: 64px; margin-top: 20px;">
 						<input name="choice" type="radio" id="cv" value="cv" required=""/>

@@ -16,6 +16,7 @@ if (!isset($_SESSION['login'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="theme-color" content="#444444">
 
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
@@ -60,7 +61,7 @@ if (!isset($_SESSION['login'])){
         $req->execute([$_SESSION['login']]);
         $user = $req->fetch(PDO::FETCH_OBJ);
     ?>
-    <div class="col l2 m12 s12 z-depth-3 white box-compte-contenu">
+    <div class="col l3 m12 s12 z-depth-3 white box-compte-contenu">
         <div class="center-align col s12 m12 l12"><h3>Mes infos</h3></div>
         <?php
             $avatar = "user-folder/" . $_SESSION['auth']->pseudo . "/" . $_SESSION['auth']->pseudo . "_avatar.png";
@@ -71,35 +72,28 @@ if (!isset($_SESSION['login'])){
             <?php } ?>
         <div class="center-align col s12 m12 l12">
             <div class="row" style="margin-top: 20px;">
-                <div class="col s12 m12 l12">
-                    <i class="left material-icons pink-text accent-4" style="font-size: 34px; line-height: 48px;">assignment_ind</i>
-                    <div class="col s9 m9 l9 left-align profil-text"><?= $user->pseudo ?></div>
-                </div>
-                <div class="col s12 m12 l12" style="margin: 5px 0; border: 0; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(150, 150, 150, 0.75), rgba(0, 0, 0, 0));"></div>
-                <div class="col s12 m12 l12">
-                    <i class="left material-icons pink-text accent-4" style="font-size: 34px; line-height: 54px;">people</i>
-                    <div class="col s9 m9 l9 left-align profil-text"><?= $user->nom ?></div>
-                    <div class="col s9 m9 l9 left-align profil-text"><?= $user->prenom ?></div>
-                </div>
-                <div class="col s12 m12 l12" style="margin: 5px 0; border: 0; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(150, 150, 150, 0.75), rgba(0, 0, 0, 0));"></div>
-                <div class="col s12 m12 l12">
-                    <i class="left material-icons pink-text accent-4" style="font-size: 34px; line-height: 48px;">cake</i>
-                    <div class="col s9 m9 l9 left-align profil-text"><?= $user->datedenaissance ?></div>
-                </div>
-                <div class="col s12 m12 l12" style="margin: 5px 0; border: 0; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(150, 150, 150, 0.75), rgba(0, 0, 0, 0));"></div>
-                <div class="col s12 m12 l12">
-                    <i class="left material-icons pink-text accent-4" style="font-size: 34px; line-height: 48px;">edit</i>
-                    <div class="col s9 m9 l9 left-align profil-text"><?= date('d/m/y', $user->date_inscription) ?></div>
-                </div>
-                <div class="col s12" style="margin: 5px 0; border: 0; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(150, 150, 150, 0.75), rgba(0, 0, 0, 0));"></div>
-                <div class="col s12">
-                    <i class="left material-icons pink-text accent-4" style="font-size: 34px; line-height: 48px;">mail</i>
-                    <div class="col s9 m9 l9 left-align profil-text-email"><?= $user->email ?></div>
-                </div>
+
+                <div class="col s12 m12 l12 center-align profil-text"><?= $user->pseudo ?></div>
+
+                <div class="separator col offset-s4 s4 offset-m4 m4 offset-l4 l4"></div>
+
+                <div class="col s12 m12 l12 center-align profil-text"><?= $user->nom ?> <?= $user->prenom ?></div>
+
+                <div class="separator col offset-s4 s4 offset-m4 m4 offset-l4 l4"></div>
+
+                <div class="col s12 m12 l12 center-align profil-text-small"><?= $user->datedenaissance ?></div>
+
+                <div class="separator col offset-s4 s4 offset-m4 m4 offset-l4 l4"></div>
+
+                <div class="col s12 m12 l12 center-align profil-text"><?= date('d/m/y', $user->date_inscription) ?></div>
+
+                <div class="separator col offset-s4 s4 offset-m4 m4 offset-l4 l4"></div>
+
+                <div class="col s12 m12 l12 center-align profil-text-email"><?= $user->email ?></div>
             </div>
         </div>
     </div>
-    <div class="col l8 s12 offset-l1 z-depth-3 white box-compte-contenu">
+    <div class="col l7 s12 offset-l1 z-depth-3 white box-compte-contenu">
         <div class="center-align"><h3>Mon activitée</h3></div>
         <div class="row">
             <div class="col s12">
@@ -184,7 +178,7 @@ if (!isset($_SESSION['login'])){
 <div class="parallax-container parallax-little">
     <div class="parallax"><img src="https://images8.alphacoders.com/413/413114.jpg" style="display: block; transform: translate3d(-50%, 492px, 0px);"></div>
 </div>
-<!------- ONLY BOUTON EDIT MED AND DOWN ----->
+
 <div class="fixed-action-btn top" style="bottom: 45px; right: 24px;">
     <a class="btn-floating btn-large red">
         <i class="large material-icons">mode_edit</i>
@@ -197,18 +191,13 @@ if (!isset($_SESSION['login'])){
     </ul>
 </div>
 
-
-
-<div class="row">
-
-</div>
 <!-- FOOTER -->
 <?php include 'include/modal/change-avatar.php';?>
 <?php include 'include/footer.php';?>
 
 <!-- SCRIPTS JS -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="js/materialize.min.js"></script>
+<script type="text/javascript" src="js/materialize.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.4/SmoothScroll.min.js"></script>
 <script src='https://www.google.com/recaptcha/api.js'></script>

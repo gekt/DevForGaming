@@ -12,11 +12,12 @@ if (!isset($_SESSION['login'])){
 
 if (isset($_POST['envoyer'])) {
     require_once 'include/bdd.php';
-    $req = $DB->prepare("INSERT INTO messagerie SET destinataire= ?, expediteur= ?, sujet= ?, message= ?");
-    $req->execute([$_POST['destinataire'], $_SESSION['login'], $_POST['sujet'], $_POST['Message']]);
+    $time_now = mktime(date("H"), date("i"), date("s"), date("m"), date("d"), date("Y"));
+    $req = $DB->prepare("INSERT INTO messagerie SET destinataire= ?, expediteur= ?, sujet= ?, message= ?, time= ?");
+    $req->execute([$_POST['destinataire'], $_SESSION['login'], $_POST['sujet'], $_POST['Message'], $time_now]);
     $user = $req->fetch(PDO::FETCH_OBJ);
     $_SESSION['flash']['error'] = "Votre message à été envoyé";
-    header('location: compte.php');
+    header('location: messagerie.php');
 }
 
 if (isset($_GET['repondre'])) {
@@ -24,9 +25,6 @@ if (isset($_GET['repondre'])) {
     $req2 = $DB->prepare('SELECT * FROM messagerie WHERE id=?');
     $req2->execute([$_GET['id']]);
     $answer = $req2->fetch(PDO::FETCH_OBJ);
-    $_SESSION['flash']['error'] = "Votre message à été envoyé";
-    header('location: compte.php');
-
 }
 
 
@@ -38,6 +36,7 @@ if (isset($_GET['repondre'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="theme-color" content="#444444">
 
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
@@ -110,15 +109,12 @@ if (isset($_GET['repondre'])) {
     <div class="parallax"><img src="https://images8.alphacoders.com/413/413114.jpg" style="display: block; transform: translate3d(-50%, 492px, 0px);"></div>
 </div>
 
-<div class="row">
-
-</div>
 <!-- FOOTER -->
 <?php include 'include/footer.php';?>
 
 <!-- SCRIPTS JS -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="js/materialize.min.js"></script>
+<script type="text/javascript" src="js/materialize.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.4/SmoothScroll.min.js"></script>
 <script src='https://www.google.com/recaptcha/api.js'></script>

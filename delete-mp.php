@@ -8,7 +8,7 @@
 
 session_start();
 require_once 'include/bdd.php';
-$req2 = $DB->prepare('DELETE FROM messagerie WHERE id= ?');
+$req2 = $DB->prepare('UPDATE messagerie SET hidden=1, lu=0 WHERE id= ?');
 $req2->execute([$_GET['id']]);
 $answer = $req2->fetch(PDO::FETCH_OBJ);
 $_SESSION['flash']['error'] = "Ce message à bien été supprimé";

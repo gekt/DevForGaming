@@ -12,6 +12,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta name="theme-color" content="#444444">
 
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
@@ -28,7 +29,7 @@
         </div>
 
         <!-- INCLUDE NAVBAR -->
-        <?php include 'include/navbar.php'; ?>
+        <?php require_once 'include/navbar.php'; ?>
 
         <!-- PARALLAX PRINCIPAL -->
         <div class="parallax-container">
@@ -256,14 +257,16 @@
                             require_once 'include/bdd.php';
                             $req = $DB->prepare('SELECT * FROM cv ORDER BY id DESC LIMIT 10');
                             $req->execute();
-                            while ($d = $req->fetch(PDO::FETCH_OBJ)) {?>
+                            while ($d = $req->fetch(PDO::FETCH_OBJ)) {
+                                $avatar = "user-folder/" . $d->pseudo . "/" . $d->pseudo . "_avatar.png"; ?>
+
                                 <li class="collection-item avatar">
-                                    <i class="material-icons circle">account_circle</i>
+                                    <img class="circle" src="<?php echo $avatar ?>"></i>
                                     <span class="title"><?= $d->pseudo ?></span>
                                     <p><?= $d->role ?></p>
                                     <a onclick="changePage('cv.php?id=<?= $d->id ?>')" class="waves-effect waves-light btn light-blue secondary-content">voir<i class="material-icons right">send</i></a>
                                 </li>
-                            <?php }?>
+                            <?php } ?>
 
                             <?php
                             require_once 'include/bdd.php';
@@ -308,12 +311,14 @@
                 </div>
         </div>
 
+        <div class="row"></div>
+
         <!-- INCLUDE FOOTER -->
         <?php include 'include/footer.php';?>
 
         <!-- SCRIPTS JS -->
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script type="text/javascript" src="js/materialize.min.js"></script>
+        <script type="text/javascript" src="js/materialize.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.4/SmoothScroll.min.js"></script>
         <?php include 'include/alert.php';?>

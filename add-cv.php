@@ -29,6 +29,7 @@ if (isset($_POST['addcv'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="theme-color" content="#444444">
 
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
@@ -77,12 +78,13 @@ if (isset($_POST['addcv'])) {
             </div>
             <div class="row">
                 <div class="input-field col offset-l2 offset-m2 l8 m8 s12">
-                    <select class="browser-default styled-select" name="niveau" required>
-                        <option value="" disabled selected>Votre niveau</option>
-                        <option value="Débutant">Débutant</option>
-                        <option value="Amateur">Amateur</option>
-                        <option value="Expérimenté">Expérimenté</option>
+                    <select class="styled-select" name="niveau" required>
+                        <option value="" disabled selected>Sélectionnez votre niveau</option>
+                        <option value="débutant">Débutant</option>
+                        <option value="amateur">Amateur</option>
+                        <option value="expérimenté">Expérimenté</option>
                     </select>
+                    <label class="label-inscription">Votre niveau</label>
                 </div>
             </div>
             <div class="row">
@@ -125,16 +127,12 @@ if (isset($_POST['addcv'])) {
     <div class="parallax"><img src="https://images8.alphacoders.com/413/413114.jpg" style="display: block; transform: translate3d(-50%, 492px, 0px);"></div>
 </div>
 
-
-<div class="row">
-
-</div>
 <!-- FOOTER -->
 <?php include 'include/footer.php';?>
 
 <!-- SCRIPTS JS -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="js/materialize.min.js"></script>
+<script type="text/javascript" src="js/materialize.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.4/SmoothScroll.min.js"></script>
 <script src='https://www.google.com/recaptcha/api.js'></script>

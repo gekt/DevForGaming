@@ -13,6 +13,7 @@ $(document).ready(function(){
 	$('.parallax').parallax();
 	$(".button-collapse").sideNav();
 	$('.modal-trigger').leanModal();
+    $('select').material_select();
 	$('#aside').pushpin({ top:110, bottom:500 });
     $('.datepicker').pickadate({
         selectMonths: true,

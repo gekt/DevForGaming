@@ -1367,6 +1367,10 @@ if ($) {
 
             // Create tooltip
             var newTooltip = $('<div></div>');
+            var tooltipEmplacement =  origin.attr('data-emplacement');
+            if (tooltipEmplacement === "fixed") {
+                newTooltip.addClass('material-tooltip-navbar');
+            }
             newTooltip.addClass('material-tooltip').append(tooltip_text)
                 .appendTo($('body'))
                 .attr('id', tooltipId);
@@ -1407,7 +1411,11 @@ if ($) {
 
                         if (tooltipPosition === "top") {
                             // Top Position
-                            targetTop = origin.offset().top - tooltipHeight - margin;
+                            if (tooltipEmplacement === "fixed") {
+                                targetTop = tooltipHeight - margin;
+                            } else {
+                                targetTop = origin.offset().top - tooltipHeight - margin;
+                            }
                             targetLeft = origin.offset().left + originWidth/2 - tooltipWidth/2;
                             newCoordinates = repositionWithinScreen(targetLeft, targetTop, tooltipWidth, tooltipHeight);
 
@@ -1421,7 +1429,11 @@ if ($) {
                         }
                         // Left Position
                         else if (tooltipPosition === "left") {
-                            targetTop = origin.offset().top + originHeight/2 - tooltipHeight/2;
+                            if (tooltipEmplacement === "fixed") {
+                                targetTop = originHeight/2 - tooltipHeight/2;
+                            } else {
+                                targetTop = origin.offset().top + originHeight/2 - tooltipHeight/2;
+                            }
                             targetLeft =  origin.offset().left - tooltipWidth - margin;
                             newCoordinates = repositionWithinScreen(targetLeft, targetTop, tooltipWidth, tooltipHeight);
 
@@ -1437,7 +1449,11 @@ if ($) {
                         }
                         // Right Position
                         else if (tooltipPosition === "right") {
-                            targetTop = origin.offset().top + originHeight/2 - tooltipHeight/2;
+                            if (tooltipEmplacement === "fixed") {
+                                targetTop = originHeight/2 - tooltipHeight/2;
+                            } else {
+                                targetTop = origin.offset().top + originHeight/2 - tooltipHeight/2;
+                            }
                             targetLeft = origin.offset().left + originWidth + margin;
                             newCoordinates = repositionWithinScreen(targetLeft, targetTop, tooltipWidth, tooltipHeight);
 
@@ -1453,7 +1469,11 @@ if ($) {
                         }
                         else {
                             // Bottom Position
-                            targetTop = origin.offset().top + origin.outerHeight() + margin;
+                            if (tooltipEmplacement === "fixed") {
+                                targetTop = origin.outerHeight() + margin;
+                            } else {
+                                targetTop = origin.offset().top + origin.outerHeight() + margin;
+                            }
                             targetLeft = origin.offset().left + originWidth/2 - tooltipWidth/2;
                             newCoordinates = repositionWithinScreen(targetLeft, targetTop, tooltipWidth, tooltipHeight);
                             tooltipVerticalMovement = '+10px';

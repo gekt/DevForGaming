@@ -24,6 +24,7 @@ $data = $req->fetch(PDO::FETCH_OBJ);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="theme-color" content="#444444">
 
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
@@ -62,7 +63,7 @@ $data = $req->fetch(PDO::FETCH_OBJ);
     <article class="col offset-l2 l8 s12 m12 white z-depth-3">
         <section class="col l12 m12 s12 center-align">
             <?php
-            $avatar = "user-folder/" . $_SESSION['auth']->pseudo . "/" . $_SESSION['auth']->pseudo . "_avatar.png";
+            $avatar = "user-folder/" . $data->pseudo . "/" . $data->pseudo . "_avatar.png";
             if (file_exists($avatar)) {?>
                 <img src='<?php echo $avatar ?>' alt="profile image" class="circle responsive-img cv-img z-depth-2" style="width: 200px;border-radius: 100px;height: 200px;"> <!-- notice the "circle" class -->
             <?php } else { ?>
@@ -86,15 +87,15 @@ $data = $req->fetch(PDO::FETCH_OBJ);
             <ul class="collapsible col l12 s12 m12" data-collapsible="expandable">
                 <li>
                     <div class="collapsible-header active "><i class="material-icons">filter_drama</i><span class="title-collapse-cv">Ma description</span></div>
-                    <div class="collapsible-body"><p class="text-collapse-cv"><?= $data->desc_perso ?></p></div>
+                    <div class="collapsible-body"><p class="text-collapse-cv"><?= html_entity_decode(nl2br(htmlentities(trim($data->desc_perso)))) ?></p></div>
                 </li>
                 <li>
                     <div class="collapsible-header active "><i class="material-icons">place</i><span class="title-collapse-cv">Je recherche</span></div>
-                    <div class="collapsible-body"><p class="text-collapse-cv"><?= $data->desc_prjt ?></p></div>
+                    <div class="collapsible-body"><p class="text-collapse-cv"><?= html_entity_decode(nl2br(htmlentities(trim($data->desc_prjt)))) ?></p></div>
                 </li>
                 <li>
                     <div class="collapsible-header active "><i class="material-icons">whatshot</i><span class="title-collapse-cv">Mon expérience</span></div>
-                    <div class="collapsible-body"><p class="text-collapse-cv"><?= $data->exp ?></p></div>
+                    <div class="collapsible-body"><p class="text-collapse-cv"><?= html_entity_decode(nl2br(htmlentities(trim($data->exp)))) ?></p></div>
                 </li>
             </ul>
         </section>
@@ -110,16 +111,12 @@ $data = $req->fetch(PDO::FETCH_OBJ);
     <div class="parallax"><img src="https://images8.alphacoders.com/413/413114.jpg" style="display: block; transform: translate3d(-50%, 492px, 0px);"></div>
 </div>
 
-
-<div class="row">
-
-</div>
 <!-- FOOTER -->
 <?php include 'include/footer.php';?>
 
 <!-- SCRIPTS JS -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="js/materialize.min.js"></script>
+<script type="text/javascript" src="js/materialize.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.4/SmoothScroll.min.js"></script>
 <script src='https://www.google.com/recaptcha/api.js'></script>

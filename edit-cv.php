@@ -29,6 +29,7 @@ if (!isset($_SESSION['login']) && (!isset($_GET['id'])) || (isset($_SESSION['log
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="theme-color" content="#444444">
 
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
@@ -93,7 +94,7 @@ if (!isset($_SESSION['login']) && (!isset($_GET['id'])) || (isset($_SESSION['log
             </div>
             <div class="row">
                 <div class="input-field col offset-l2 offset-m2 l8 m8 s12">
-                    <textarea id="desc_perso" name="desc_perso" class="materialize-textarea"><?= $cv->desc_prjt ?></textarea>
+                    <textarea id="desc_perso" name="desc_perso" class="materialize-textarea"><?= $cv->desc_perso ?></textarea>
                     <label class="label-inscription" for="desc_perso">Description de vous</label>
                 </div>
             </div>
@@ -105,7 +106,7 @@ if (!isset($_SESSION['login']) && (!isset($_GET['id'])) || (isset($_SESSION['log
             </div>
             <div class="row">
                 <div class="input-field col offset-l2 offset-m2 l8 m8 s12">
-                    <textarea id="exp" name="exp" class="materialize-textarea"><?= $cv->desc_prjt ?></textarea>
+                    <textarea id="exp" name="exp" class="materialize-textarea"><?= $cv->exp ?></textarea>
                     <label class="label-inscription" for="exp">Parlez de votre expérience</label>
                 </div>
             </div>
@@ -127,16 +128,12 @@ if (!isset($_SESSION['login']) && (!isset($_GET['id'])) || (isset($_SESSION['log
     <div class="parallax"><img src="https://images8.alphacoders.com/413/413114.jpg" style="display: block; transform: translate3d(-50%, 492px, 0px);"></div>
 </div>
 
-
-<div class="row">
-
-</div>
 <!-- FOOTER -->
 <?php include 'include/footer.php';?>
 
 <!-- SCRIPTS JS -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="js/materialize.min.js"></script>
+<script type="text/javascript" src="js/materialize.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.4/SmoothScroll.min.js"></script>
 <script src='https://www.google.com/recaptcha/api.js'></script>
